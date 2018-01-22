@@ -162,6 +162,64 @@ To start things off, the freecodecamp [guide][02] has a section on creating NavB
     }
 ```
 
+Now since the `Link` component from `gatsby-link` doesn't throw linter errors, time to put together the basic first version of the Header and its Navigation section using `Link`s. This will eventually be split into seperate components as I decide what the first release of the `Header` should look like. Below is the code, initially taken from freeCodeCamp's [guide][02] and then modified for my needs. That is to have a title for the site, and two `Links`, one leading to the main feed on the `/` route and the about page on `/about`. Without getting too serious about styling a few styles were changed to make the links reachable by the user and black is given as its background so that it stops looking like the gatsby bootstrap's `rebeccapurple`. Below is the code for this update, and the resulting page.
+
+`src/components/Header/index.js`
+```jsx
+import React from 'react';
+import Link from 'gatsby-link';
+
+const Header = () => (
+  <div
+    style={{
+      background: 'black',
+      marginBottom: '1.6rem',
+    }}
+  >
+    <h1 style={{ color: 'white' }}>Pattern Buffer</h1>
+    <div
+      style={{
+        margin: '0 auto',
+        maxWidth: 960,
+        padding: '3.2rem 1rem',
+      }}
+    >
+      <ul style={{ listStyle: 'none', float: 'right' }}>
+        <li style={{ display: 'inline-block', marginRight: '1rem' }}>
+          <Link
+            style={{
+              color: 'white',
+              textDecoration: 'none',
+              fontSize: 'medium',
+            }}
+            to="/"
+          >
+            Feed
+          </Link>
+        </li>
+        <li style={{ display: 'inline-block', marginRight: '1rem' }}>
+          <Link
+            style={{
+              color: 'white',
+              textDecoration: 'none',
+              fontSize: 'medium',
+            }}
+            to="/about"
+          >
+            About
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+);
+
+export default Header;
+```
+
+![Initial version of Header][i02]
+
+
 
 References
 ----------
@@ -183,3 +241,4 @@ References
 7. [Github Issues: eslint-plugin-jsx-a11y #340][07]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
+[i02]: ./docs/images/pattern-buffer-log-init-header.png
