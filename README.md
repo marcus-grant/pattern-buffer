@@ -149,7 +149,18 @@ Building Gatsby Components Using React
 --------------------------------------
 Now that everything runs like a modern Node & React build/development environment *(although under-the-hood it's a slightly different story)* it's time to build some React components. A typical thing that most sites, especially blogs, will have is a header component. In this case it will also house a basic version of a navigation menu. For now, just a *feed* and *about* link. 
 
-To start things off, the freecodecamp [guide][02] has a section on creating NavBars using the bootstrapped `Header` component. Simply copying and pasting the added JSX code into the header adds some menus. There are some complications however, the linter is picking up `jsx-a11y/anchor-is-valid` errors. These come from the `jsx-a11y` eslint plugin included with the AirBnB linter style guide. And need to be investigated further. However, even though the menu links are sized horribly and only parts of them are visible in the header, it does work as expected with the three pages defined for testing `<Links>` as before. 
+To start things off, the freecodecamp [guide][02] has a section on creating NavBars using the bootstrapped `Header` component. Simply copying and pasting the added JSX code into the header adds some menus. There are some complications however, the linter is picking up `jsx-a11y/anchor-is-valid` errors. These come from the `jsx-a11y` eslint plugin included with the AirBnB linter style guide. And need to be investigated further. However, even though the menu links are sized horribly and only parts of them are visible in the header, it does work as expected with the three pages defined for testing `<Links>` as before. According to this issue on the `eslint-plugin-jsx-a11y` project, anything that generates `<a>` tags requires a valid `href` property linking another page or URI to it. React router doesn't quite work this way, and unfortunately the AirBnB style guide, though supposedly a very react friendly ruleset doesn't yet address this problem. To fix it add this rule for `jsx-a11y/anchor-is-valid` to the previous rules in the `.eslintrc` configuration and all should be well.
+
+`.eslint.json`
+```json
+    "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }]
+    }
+```
 
 
 References
@@ -161,6 +172,7 @@ References
 [04]: https://github.com/marcus-grant/pattern-buffer/issues/7 "Gatsby develop updating & disconnection issue"
 [05]: https://github.com/gatsbyjs/gatsby/issues/3043 "Github/gatsbyjs/gatsby issue #3043: gatsby develop only sporadically recompiles on save"
 [06]: https://www.gatsbyjs.org/packages/gatsby-plugin-sass/ "GatsbyJS Docs: gatsby-plugin-sass"
+[07]: https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/340 "Github Issues: eslint-plugin-jsx-a11y #340"
 
 1. [Gatsby documentation - Building with Components][01]
 2. [freeCodeCamp: Setting Up a Getting Used to Gatsby][02]
@@ -168,5 +180,6 @@ References
 4. [Project Issues: Gatsby develop updating & disconnection issue][04]
 5. [Github/gatsbyjs/gatsby: issue #3043][05]
 6. [GatsbyJS Docs: gatsby-plugin-sass][06]
+7. [Github Issues: eslint-plugin-jsx-a11y #340][07]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
