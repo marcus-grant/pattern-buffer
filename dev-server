@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# a helper script to track updates on how to run dev server with file watchers,
+# and host configuration that ensure gatsby develop works properly.
+
+export CHOKIDAR_USEPOLLING=1
+gatsby develop --host localhost
