@@ -220,6 +220,87 @@ export default Header;
 ![Initial version of Header][i02]
 
 
+Catch Links
+-----------
+
+> Intercepts local links from markdown and other non-react pages and does a client-side pushState to avoid the browser having to refresh the page.
+
+- from GatsbyJS's [docs][09] describing the benefits of catch links
+
+Because a lot of non-react built pages will be sourced to create pages, the catch links plugin will be useful to allow any generated pages from markdown for example to have the benefits of the native react parts of the site.
+
+
+Sourcing & Transforming Markdown for Blog Posts
+-----------------------------------------------
+Using the official GatsbyJS [guide][08] to create a blog, the relevant plugins and configurations are going to be installed and configured. *Source* plugins in gatsby create *nodes* which are then *transformed* using *transformer* plugins to a usable format. In this case the *source* plugin that will be used is the `gatsby-source-filesystem`, which allows sourcing of files off the host filesystem to create *nodes*.
+
+Install the plugin with `yarn add gatsby-source-filesystem`, then edit `gatsby-config.js`:
+
+`gatsby-config.js`
+```js
+module.exports = {
+  // previous configuration
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-catch-links',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
+    }
+  ]
+}
+```
+
+Unlike other gatsby plugins that simply need to be included in the config to work, this one needs some configuration by setting up its own object entry inside the `plugins:` keyed array of plugins like above. The `resolve` key is there to *resolve* these configurations to the `gatsby-source-filesystem` plugin. `options` is where gatsby plugin options are specified. `path` defines the place to look for files in the host system. In this case in the project root vis-à-vis, `${__dirname}/src/pages`, so the pages directory where other react-based pages have been created, like `src/pages/index.js`. Then `name` provides a name for the source and so it can be queried later using GraphQL to get the information therein.
+
+### Transforming a Source
+Now with a source in place outside the native react pages that can be statically generated, it's possible to transform the new source into gatsby static pages as well. Here the filesystem source plugin will load file nodes *(markdown files in this case)* and then a new plugin will *transform* it into a static pages based off layout and stylesheets that query that data.
+
+[`gatsby-transformer-remark`][10] uses [`remark`][11] as a markdown parser to transform markdown files into HTML. Moreover this *transformer* plugin can be made to take plugins to further extend the functionality. One such plugin that will be used later is for syntax highlighting of code blocks (`gatsby-remark-prismjs`), a plugin that copies linked files from markdown into the source tree (`gatsby-remark-copy-linked-file`), and also a plugin that compresses and adds by relative path referenced images within the markdown (`gatsby-remark-images`).
+
+As any other plugin before, install using yarn or npm, whichever is preferred, `yarn add gatsby-transformer-remark`. Edit the `gatsby-config.js` with options like with `gtasby-source-filesystem`. Note that this time the only `options` is an empty array, which is left there for when associated plugins get added.
+
+`gatsby-config.js`
+```js
+// inside of the plugins array of gatsby-config.js
+ {
+    resolve: 'gatsby-transformer-remark',
+    options: {
+      plugins: [] // just in case those previously mentioned remark plugins sound cool :)
+    }
+  },
+// other configs...
+```
+
+### Using Sources & Transformers on a Blog Post
+Now with all the plugins required to create markdown based posts, it's possible to create a test markdown file to start things off within `src/pages` as was specified as a place to query for markdown files. As a starting convention, `YYYY-MM-DD-title` will be the format for naming folders for each post. GatsbyJS isn't particularly picky about how these are named, but it might be about naming the main markdown file inside this folder `index.md` since it needs to know where to start parsing files. **Note** some research is needed to find out if `index.md` is requried.
+
+`src/pages/2018-01-14-hello-world/index.md`
+```md
+---
+path: "/hello-world"
+date: "2017-07-12T17:12:33.962Z"
+title: "My First Gatsby Post"
+---
+
+Oooooh-weeee, my first blog post!
+```
+
+Remark adds the functionality of **frontmatter** to markdown files that gets parsed. Essentially all it is, is some syntax to add metadata to markdown files (or YAML, JSON, etc). Just surround the first part of a markdown file with a header like structure using `---` dashes for the top and bottom bar of the **frontmatter**. Then inside can be specified different fields of metadata like, `title`, `date`, `tag`, `category`. These fields can then be queried by gatsby using GraphQL to change how the file is handled based on that metadata. For example, it will be useful to use all of those fields plus another, `subtitle` to create a preview for a post. `path` in this case creates a URL path that can be used, so if `localhost:8000/hello-world` will take you to this page, **if** it had a layout.
+
+### Creating a Page Template with React
+Since gatsby is all about rendering using React components, in order to turn a markdown post into a page, a template written in react is needed first. Start by creating this file, `src/templates/blog-post.js`, keeping in mind that `src/templates/` might need to be created first.
+`src/templates/blog-post.js`
+```jsx
+```
+
+
+
+
 
 References
 ----------
@@ -231,6 +312,10 @@ References
 [05]: https://github.com/gatsbyjs/gatsby/issues/3043 "Github/gatsbyjs/gatsby issue #3043: gatsby develop only sporadically recompiles on save"
 [06]: https://www.gatsbyjs.org/packages/gatsby-plugin-sass/ "GatsbyJS Docs: gatsby-plugin-sass"
 [07]: https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/340 "Github Issues: eslint-plugin-jsx-a11y #340"
+[08]: https://www.gatsbyjs.org/blog/2017-07-19-creating-a-blog-with-gatsby/ "GatsbyJS Docs: Creating a blog with GatsbyJS"
+[09]: https://www.gatsbyjs.org/packages/gatsby-plugin-catch-links/ "GatsbyJS Docs: gatsby-plugin-catch-links"
+[10]: https://www.gatsbyjs.org/packages/gatsby-transformer-remark/ "GatsbyJS Docs: gatsby-transformer-remark"
+[11]: https://github.com/wooorm/remark "Github: woorm/remark"
 
 1. [Gatsby documentation - Building with Components][01]
 2. [freeCodeCamp: Setting Up a Getting Used to Gatsby][02]
@@ -239,6 +324,10 @@ References
 5. [Github/gatsbyjs/gatsby: issue #3043][05]
 6. [GatsbyJS Docs: gatsby-plugin-sass][06]
 7. [Github Issues: eslint-plugin-jsx-a11y #340][07]
+8. [GatsbyJS Docs: Creating a blog with GatsbyJS][08]
+9. [GatsbyJS Docs: gatsby-plugin-catch-links][09]
+10. [GatsbyJS Docs: gatsby-transformer-remark][10]
+11. [Github: woorm/remark][11]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
 [i02]: ./docs/images/pattern-buffer-log-init-header.png
