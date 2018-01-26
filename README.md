@@ -293,11 +293,116 @@ Oooooh-weeee, my first blog post!
 Remark adds the functionality of **frontmatter** to markdown files that gets parsed. Essentially all it is, is some syntax to add metadata to markdown files (or YAML, JSON, etc). Just surround the first part of a markdown file with a header like structure using `---` dashes for the top and bottom bar of the **frontmatter**. Then inside can be specified different fields of metadata like, `title`, `date`, `tag`, `category`. These fields can then be queried by gatsby using GraphQL to change how the file is handled based on that metadata. For example, it will be useful to use all of those fields plus another, `subtitle` to create a preview for a post. `path` in this case creates a URL path that can be used, so if `localhost:8000/hello-world` will take you to this page, **if** it had a layout.
 
 ### Creating a Page Template with React
-Since gatsby is all about rendering using React components, in order to turn a markdown post into a page, a template written in react is needed first. Start by creating this file, `src/templates/blog-post.js`, keeping in mind that `src/templates/` might need to be created first.
+Since gatsby is all about rendering using React components, in order to turn a markdown post into a page, a template written in react is needed first. Start by creating this file, `src/templates/blog-post.js`, keeping in mind that `src/templates/` might need to be created first. The `src/templates/` directory is a standard folder in gatsby for storing templates like this for any developer defined reused templates that get used by multiple pages.
+
 `src/templates/blog-post.js`
 ```jsx
+import React from 'react';
+import Helmet from 'react-helmet';
+
+// import '../css/blog-post.scss'; // future styling
+
+const pageTitle = 'Pattern Buffer';
+
+// This will take among its props, an injected GraphQL query for blog posts
+// TODO: Try different methods to replace dangerouslySetInnerHTML, like wrapping div
+// TODO: Create proptypes
+export default function Template({ data }) {
+  const { markdownRemark: post } = data; // data.markdownRemark holds post data
+  return (
+    <div className="post__container">
+      <Helmet title={`${pageTitle} - ${post.frontmatter.title}`} />
+      <div className="post">
+        <h1>{post.frontmatter.title}</h1>
+        <div
+          className="post__content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export const pageQuery = graphql`
+  query BlogPostByPath($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        path
+        title
+      }
+    }
+  }
+`;
 ```
 
+There is some *magic* at play here for anyone not accustomed to GraphQL and Gatsby. The `Template` is a prop injection handled by gatsby and it essentially becomes an injection of a component prop. `<Template />` then needs to be seeded by a GraphQL query, one named `pageQuery`.
+
+`pageQuery` gets used to with the injected `data` prop to query for pages and in the case of this template, frontmatter like `title`, `path` *(for url resolution)*, `date` & finally the post content parsed by remark from the specific page. The main query performed by `pageQuery` gets named `BlogPostByPath` is injected with the current path *(ie. the current url path of the page being rendered)* as a parameter. Then the result of the query is a markdownRemark object which contains everything else needed to render the page.
+
+`markdownRemark` is the injected property available as the prop `data` by destructuring in the Template component definition. There is a somewhat complex structure to accessing all the data desired within the `markdownRemark` query, but ultimately it's just setting up easy to access references for the body content of the post, and its `frontmatter` stored metadata. Any other accessible property of `frontmatter` that gets used to create blog post metadata can be added in along with the other properties. `subtitle` & `previewImagePath` will be added later to improve the blog.
+
+**NOTE**: all the node based **GraphQL queries** take place **at build time**. The component is injected with the `data` prop that is seeded by the GraphQL query. Only if something dynamic *(e.g. logic in `componentDidMount`, state changes, etc.)* occurs this component gets processed as a react component which is then created as static rendered HTML, rendered through the React engine, GraphQL, & Gatsby together.
+
+### Querying for Posts
+Gatsby uses its [Node API][12] which allows for creation of things like dynamic pages *(blog posts)* in this case, extending the babel or webpack configs, modifying the created nodes or pages, etc. The API is exposed in the `./gatsby-node.js` file in the project root. Every export of found in this file gets parsed by Gatsby using the [Node API][12]. For creating a blog post, the only one of interest for now is the `createPages` part of the API. This is the code for the updated `gatsby-node.js` file, below.
+
+`./gatsby-node.js`
+```js
+const path = require('path');
+
+exports.createPages = ({ boundActionCreators, graphql }) => {
+  const { createPage } = boundActionCreators;
+
+  const blogPostTemplate = path.resolve('src/templates/blog-post.js');
+
+  return graphql(`{
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          html
+          id
+          frontmatter {
+            date
+            path
+            title
+          }
+        }
+      }
+    }
+  }`)
+    .then((result) => {
+      if (result.errors) {
+        return Promise.reject(result.errors);
+      }
+      result.data.allMarkdownRemark.edges
+        .forEach(({ node }) => {
+          createPage({
+            path: node.frontmatter.path,
+            component: blogPostTemplate,
+            context: {}, // additional data can be passed via context
+          });
+        });
+    });
+};
+```
+
+The `createPages` API is visibly accessed as an export. Then its generator function is accessed through the injected prop `boundActionCreators` and `blogPostTemplate` becomes the path to the location of the template for a blog post. Internally, Gatsby uses Redux to manage state, and `boundActionCreators` is simply the exposed ation creators of Gatsby, with `createPage` being the one specific to generating pages based off of Nodes.
+
+GraphQL gets used once again to get all markdown nodes and making them accessible under `allMarkdownRemark` as a GraphQL property. Remember `allMarkdownRemark` was used before to define how data gets pulled from the Template to render the page from markdown. It's important to note that `exports.createPages`, the API expects a Promise to be returned, so it works seamlessly with the `graphql` function which expects a Promise. There are also regular callback API's inplace if that makes more sense.
+
+In the future, as subtitles might be desirable for post previews, `gatsby-plugin-remark` exposes useful data like `excerpt` which is a short segment of text to be displayed as a preview, and `id` as a unique ID for the page.
+
+This is only the query setup, then the resulting promise chain needs addressing, this is handled with `.then`. The posts are available by the path property `result.data.allMarkdownRemark.edges`. Each edge contains an internal node created by Gatsby used to construct a page. Note that the ***shape*** of this data is reflected both in this query and the one specified for the `blog-post` template. This data is then injected into the template's props. So to summarize, every time Gatsby builds, `createPage` is called, Gatsby creates a static HTML file of the path specified in the posts' frontmatter, then resulting in a string of the react component of the template specified which has props injected as the result of its GraphQL query.
+
+Finally! Run `yarn develop`, `gatsby develop`, etc. to run the dev server and something like this should be the new result at `http://localhost:8000/hello-world`.
+
+![the first markdown generated blog post][i03]
 
 
 
@@ -316,6 +421,7 @@ References
 [09]: https://www.gatsbyjs.org/packages/gatsby-plugin-catch-links/ "GatsbyJS Docs: gatsby-plugin-catch-links"
 [10]: https://www.gatsbyjs.org/packages/gatsby-transformer-remark/ "GatsbyJS Docs: gatsby-transformer-remark"
 [11]: https://github.com/wooorm/remark "Github: woorm/remark"
+[12]: https://www.gatsbyjs.org/docs/node-apis/ "GatsbyJS Docs: Node API Specification"
 
 1. [Gatsby documentation - Building with Components][01]
 2. [freeCodeCamp: Setting Up a Getting Used to Gatsby][02]
@@ -328,6 +434,8 @@ References
 9. [GatsbyJS Docs: gatsby-plugin-catch-links][09]
 10. [GatsbyJS Docs: gatsby-transformer-remark][10]
 11. [Github: woorm/remark][11]
+12. [GatsbyJS Docs: Node API Specification][12]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
 [i02]: ./docs/images/pattern-buffer-log-init-header.png
+[i03]: ./docs/images/pattern-buffer-log-first-blog-post.png
