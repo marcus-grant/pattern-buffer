@@ -405,6 +405,59 @@ Finally! Run `yarn develop`, `gatsby develop`, etc. to run the dev server and so
 ![the first markdown generated blog post][i03]
 
 
+Creating a Feed for Posts
+-------------------------
+Individual posts are only so useful by themselves. Better to have a *listing* or *feed* page to show them all so one can be chosen to be viewed in full. Gatsby has a standard for such *listing pages*. Since `gatsby-source-filesystem` has been specified with the location `src/pages/` as the root of the page's filesystem it is there where an `index.js` file should exist that defines the root page, *(ie the one that has no additional route in the URL)*. By default any page within pages is accessible by its file name without the extension.
+
+`src/pages/index.js`
+```js
+import React from 'react';
+import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
+
+// import '../css/index.css'; // add some style if you want!
+
+export default function Index({ data }) {
+  const { edges: posts } = data.allMarkdownRemark;
+  return (
+    <div className="blog-posts">
+      {posts
+        .filter(post => post.node.frontmatter.title.length > 0)
+        .map(({ node: post }) => (
+          <div className="blog-post-preview" key={post.id}>
+            <h1>
+              <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+            </h1>
+            <h2>{post.frontmatter.date}</h2>
+            <p>{post.excerpt}</p>
+          </div>
+      ))}
+    </div>
+  );
+}
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          id
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            path
+          }
+        }
+      }
+    }
+  }
+`;
+```
+
+This uses another `pageQuery` using GraphQL as before to acquire the pages that are to be rendered as posts, and then constructs post previews using information like `title`, `date`, `path`. Note that `excerpt` gets used from `remark`'s frontmatter property of that name. This is a short `excerpt` of the contents of the post, typically the first 140 characters or so. Later a `subtitle` frontmatter is to be created that allows for specifying a seperate preview that can be specified by the author if something else is desired to be viewed in preview. This will do just fine for now. Also note that `Link` gets used to route to the full post component whose path matches that of the markdown frontmatter property `path`.
+
+Now there is an actually functional blog in place. New markdown posts will be rendered as new pages and listed in the index. The main functionality of this blog is now a template that can be further expanded on for most things that it needs to be capable, the rest is just React and SASS.
 
 
 References
@@ -438,4 +491,4 @@ References
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
 [i02]: ./docs/images/pattern-buffer-log-init-header.png
-[i03]: ./docs/images/pattern-buffer-log-first-blog-post.png
+[i03]: ../docs/images/pattern-buffer-log-first-blog-post.png
