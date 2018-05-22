@@ -50,4 +50,5 @@ node_modules/
 
 .serverless/
 
-
+# Tern
+*.tern-port
