@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 // import '../css/blog-post.scss'; // future styling
@@ -23,6 +24,12 @@ export default function Template({ data }) {
     </div>
   );
 }
+
+Template.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({ post: PropTypes.object }),
+  }).isRequired,
+};
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {

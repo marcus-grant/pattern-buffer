@@ -1,7 +1,7 @@
 {
     "extends": "airbnb",
     "settings": {
-      "import/core-modules": ["react", "prop-types", "config"]
+      "import/core-modules": ["react", "prop-types", "config", "react-helmet"]
     },
     "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -9,5 +9,8 @@
         "components": [ "Link" ],
         "specialLink": [ "to" ]
       }]
+    },
+    "globals": {
+        "graphql": true
     }
 }

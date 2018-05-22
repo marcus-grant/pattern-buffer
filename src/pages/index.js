@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+// import Helmet from 'react-helmet';
 
 // import '../css/index.css'; // add some style if you want!
 
@@ -22,6 +23,12 @@ export default function Index({ data }) {
     </div>
   );
 }
+
+Index.propTypes = {
+  data: PropTypes.shape({ allMarkdownRemark: PropTypes.object.isRequired }),
+}; Index.defaultProps = {
+  data: null,
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
