@@ -37,8 +37,18 @@ const Header = () => (
               fontSize: 'medium',
             }}
             to="/about"
-          >
-            About
+          >About
+          </Link>
+        </li>
+        <li style={{ display: 'inline-block', marginRight: '1rem' }}>
+          <Link
+            style={{
+              color: 'white',
+              textDecoration: 'none',
+              fontSize: 'medium',
+            }}
+            to="/projects"
+          >Projects
           </Link>
         </li>
       </ul>
