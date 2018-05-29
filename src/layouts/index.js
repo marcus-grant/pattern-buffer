@@ -5,7 +5,8 @@ import Helmet from 'react-helmet';
 // import Header from '../components/Header';
 import ContentWrapper from '../components/Wrappers/content-wrapper';
 import Sidebar from '../components/Sidebar/sidebar';
-import './index.scss';
+import '../styles/main.scss';
+import './template-wrapper.scss';
 
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render

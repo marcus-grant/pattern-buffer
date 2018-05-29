@@ -1,0 +1,11 @@
+.template-wrapper {
+    // background: $background-color;
+    // overflow: auto;
+    display: flex;
+}
+
+// Top spacer div used to move content down to move whole content when reveal menu
+.template-wrapper__top-spacer {
+    // smaller bit of the golden ratio
+    height: (1 - (1vh / 1.62vh)) * 100vh;
+}
