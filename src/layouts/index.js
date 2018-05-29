@@ -5,7 +5,8 @@ import Helmet from 'react-helmet';
 // import Header from '../components/Header';
 import ContentWrapper from '../components/Wrappers/content-wrapper';
 import Sidebar from '../components/Sidebar/sidebar';
-import '../styles/main.scss';
+// import '../styles/main.scss';
+import './index.scss';
 import './template-wrapper.scss';
 
 /*
