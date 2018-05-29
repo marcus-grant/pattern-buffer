@@ -12,7 +12,15 @@ export default function Index({ data }) {
       {posts
         .filter(post => post.node.frontmatter.title.length > 0)
         .map(({ node: post }) => (
-          <div className="blog-post-preview" key={post.id}>
+          <div
+            className="blog-post-preview"
+            key={post.id}
+            style={{
+              border: '1px solid black',
+              margin: '12px',
+              padding: '6px',
+            }}
+          >
             <h1>
               <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
             </h1>

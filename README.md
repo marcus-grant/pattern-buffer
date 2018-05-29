@@ -460,6 +460,43 @@ This uses another `pageQuery` using GraphQL as before to acquire the pages that 
 Now there is an actually functional blog in place. New markdown posts will be rendered as new pages and listed in the index. The main functionality of this blog is now a template that can be further expanded on for most things that it needs to be capable, the rest is just React and SASS.
 
 
+Index Layout
+------------
+
+```
+.
+├── gatsby-config.js
+├── package.json
+└── src
+    ├── html.jsx
+    ├── pages
+    │   ├── index.jsx
+    │   └── posts
+    │       ├── 01-01-2017
+    │       │   └── index.md
+    │       ├── 01-02-2017
+    │       │   └── index.md
+    │       └── 01-03-2017
+    │           └── index.md
+    ├── templates
+    │   └── post.jsx
+    │
+    └── layouts
+        └── index.jsx
+```
+
+In Gatsby there's a default folder structure whose behavior I hadn't considered before.`layouts/index.jsx` is an important layout component that I hadn't considered and just copied from some guide.
+
+> src/layouts/index.jsx (optional) wraps page components. You can use it for portions of pages that are shared across pages like headers and footers.
+
+>You can use the location prop to render conditionally based on the page URL.
+
+That is taken from the Gatsby documentation's page on [Building with Components][13]. So essentially, by using this TemplateWrapper component, *which has been updated to include my own components Header & BodyWrapper*, every rendered page can be wrapped in a root layout that's common among all of them.
+
+
+Body Wrapper
+------------
+
 References
 ----------
 [00]: https://patternbuffer.io "PatternBuffer"
@@ -475,6 +512,7 @@ References
 [10]: https://www.gatsbyjs.org/packages/gatsby-transformer-remark/ "GatsbyJS Docs: gatsby-transformer-remark"
 [11]: https://github.com/wooorm/remark "Github: woorm/remark"
 [12]: https://www.gatsbyjs.org/docs/node-apis/ "GatsbyJS Docs: Node API Specification"
+[13]: https://www.gatsbyjs.org/docs/building-with-components/ "GatsbyJS Docs: Building with Components"
 
 1. [Gatsby documentation - Building with Components][01]
 2. [freeCodeCamp: Setting Up a Getting Used to Gatsby][02]
@@ -488,6 +526,7 @@ References
 10. [GatsbyJS Docs: gatsby-transformer-remark][10]
 11. [Github: woorm/remark][11]
 12. [GatsbyJS Docs: Node API Specification][12]
+13. [GatsbyJS Docs: Building with Components][13]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
 [i02]: ./docs/images/pattern-buffer-log-init-header.png
