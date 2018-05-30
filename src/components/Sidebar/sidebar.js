@@ -1,9 +1,15 @@
 import React from 'react';
 import Link from 'gatsby-link';
 // import PropTypes from 'prop-types';
+import '../../styles/bulma-composed.scss';
+
+import logo from './pattern-buffer-logo-v1.png';
 
 const Sidebar = () => (
-  <div className="sidebar__container">
+  <div className="column">
+    <figure className="image is-3by4">
+      <img src={logo} alt="logo" />
+    </figure>
     <h1
       style={{ color: 'white' }}
     >Pattern Buffer

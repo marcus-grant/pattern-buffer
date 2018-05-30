@@ -15,12 +15,16 @@ import './content-wrapper.scss';
  */
 const ContentWrapper = ({ children, menuButtonCallback }) => (
   <div className="page-content__wrapper--horizontal">
-    <div className="page-content__spacer--horizontal" />
+    <span className="page-content__spacer--horizontal" />
     <div className="page-content__wrapper--vertical">
-      <button onClick={menuButtonCallback}>Menu</button>
+      <button
+        className="page-content__menu-button"
+        onClick={menuButtonCallback}
+      >Menu
+      </button>
       {children}
     </div>
-    <div className="page-content__spacer--horizontal" />
+    <span className="page-content__spacer--horizontal" />
   </div>
 );
 

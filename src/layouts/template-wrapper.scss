@@ -1,7 +1,11 @@
+@import '../styles/bulma-composed.scss';
+
 .template-wrapper {
     // background: $background-color;
     // overflow: auto;
+    background: $black;
     display: flex;
+    // margin: 12px;
 }
 
 // Top spacer div used to move content down to move whole content when reveal menu

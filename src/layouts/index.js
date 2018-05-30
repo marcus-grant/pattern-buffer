@@ -37,14 +37,23 @@ export default class TemplateWrapper extends React.Component {
     // const styleFromMenuState = this.state.menuVisible ?
     //   { marginTop: '100px' } : null;
     //
+    // <div
+    //   className="template-wrapper"
+    //   style={
+    //   this.state.menuVisible ?
+    //     { marginTop: '100px' } : null
+    //   }
+    // >
+    // <div className="template-wrapper">
+    // <div
+    //   className="template-wrapper"
+    //   style={
+    //     this.state.menuVisible ? { paddingTop: '64px' } : null
+    //   }
+    // >
     return (
-      <div
-        className="template-wrapper"
-        style={
-        this.state.menuVisible ?
-          { marginTop: '100px' } : null
-        }
-      >
+      // TODO: Decide if top padding should increase when showing menu
+      <div className="template-wrapper">
         <Helmet
           title="Pattern Buffer: Now with Heisenberg Compensators!"
           meta={[

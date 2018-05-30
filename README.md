@@ -494,8 +494,102 @@ In Gatsby there's a default folder structure whose behavior I hadn't considered 
 That is taken from the Gatsby documentation's page on [Building with Components][13]. So essentially, by using this TemplateWrapper component, *which has been updated to include my own components Header & BodyWrapper*, every rendered page can be wrapped in a root layout that's common among all of them.
 
 
-Body Wrapper
-------------
+Content Wrapper
+---------------
+
+The `ContentWrapper` is the next most significant component after the `TemplateWrapper`. Since the `TemplateWrapper` is the main layout for every page that gets statically rendered by Gatsby, it's going to need other components that manage the shared layout and components that get shared by every rendered page. Since a sidebar is going to be rendered conditionally based on either the width of the browser *(sidebar is always visible)* and the state of a toggled input to slide `ContentWrapper` to the left to reveal a `Sidebar` component.
+
+To make this easier, `ContentWrapper` is created to standardize the space of the page where page content gets rendered, `Sidebar` becomes the conditionally rendered navigation and dynamic menu based on the current page. Initially, this effect was done by having `TemplateWrapper` simply not render `Sidebar` when the `menuVisible` state is false. With all the flexbox work done so far, the layouts at rest look fine, but it kills the illusion of sliding the users' perspective to right to look at a sidebar because the `ContentWrapper` simply shrinks the its contents to make room for the `Sidebar`. To improve this, later, give `BodyWrapper` negative margins to make room for `Sidebar`, but to do that `Sidebar` needs a standardized size and ideally a more organized stylesheet so that will wait till then.
+
+
+Bulma UI
+--------
+
+A great CSS/SASS/React stylsheet framework I'm growing increasingly fond of is [Bulma][14]. Named after Bulma from Dragonball Z of course, why I'm not entirely sure, but her teal hair color is clearly a favorite of the developers'. It's a large UI framework, not a Semantic or Material sized one, but it's getting up there, so I'll go into each feature as I arrive at it. Here I'll just go over the way that it gets integrated and has its SASS variables customized for this site, or any Gatsby site that should use it.
+
+First download the npm package, `npm install --save bulma`. Then, I created a file, `./src/styles/bulma-composed.scss`, where all sass styles will be composed into the `index.scss` file used for all global stylesheet parameters. Then import `bulma-composed.scss` into `index.scss`. In `bulma-composed.scss`:
+
+`src/styles/bulma-composed.scss`:
+```scss
+// Initial Variables
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// Redefine initial color values provided by bulma
+$red: #ff5252;
+$orange: #ff793f;
+$yellow: #ffb142;
+$green: #33d9b2;
+$blue: #34ace0;
+$purple: #40407a;
+
+// Add my own color definitions
+$red-dark: #b33939;
+$orange-dark: #cd6133;
+$yellow-dark: #cc8e35;
+$green-dark: #218c74;
+$blue-dark: #227093;
+$purple-dark: #2c2c54;
+$lavender: #706fd3;
+$lavender-dark: #474787;
+
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$white-ter: hsl(0, 0%, 96%);
+$white: hsl(0, 0%, 100%);
+
+// Inversions
+$red-invert: findColorInvert($red);
+$red-dark-invert: findColorInvert($red-dark);
+$orange-invert: findColorInvert($orange);
+$orange-dark-invert: findColorInvert($orange-dark);
+$yellow-invert: findColorInvert($yellow);
+$yellow-dark-invert: findColorInvert($yellow-dark);
+$green-invert: findColorInvert($green);
+$green-dark-invert: findColorInvert($green-dark);
+$blue-invert: findColorInvert($blue);
+$blue-dark-invert: findColorInvert($blue-dark);
+$purple-invert: findColorInvert($purple);
+$purple-dark-invert: findColorInvert($purple-dark);
+$lavender-invert: findColorInvert($lavender);
+$lavender-dark-invert: findColorInvert($lavender-dark);
+
+// // Color aliases
+$primary: $purple;
+$primary-invert: $purple-invert;
+$info: $blue;
+$info-invert: $blue-invert;
+$success: $green;
+$success-invert: $green-invert;
+$warning: $yellow;
+$warning-invert: $yellow-invert;
+$danger: $red;
+$danger-invert: $red-invert;
+$light: $white-ter;
+$dark: $grey-darker;
+
+//TODO: Include font family definitions
+
+// Add to the color map
+@import '~bulma/sass/utilities/derived-variables';
+$addColors: (
+    "link-color": ($primary, $primary-invert),
+);
+$colors: map-merge($colors, $addColors);
+
+@import '~bulma';
+```
+
+The important bits are the initial imports of `~/bulma/sass/utilities/Initial-variables` & **insert the imports** and the adding of color values to `$colors` at the end ar what allows developers to use bulma styles but with their own customisations.
+
+
+
 
 References
 ----------
@@ -513,6 +607,7 @@ References
 [11]: https://github.com/wooorm/remark "Github: woorm/remark"
 [12]: https://www.gatsbyjs.org/docs/node-apis/ "GatsbyJS Docs: Node API Specification"
 [13]: https://www.gatsbyjs.org/docs/building-with-components/ "GatsbyJS Docs: Building with Components"
+[14]: https://bulma.io/ "Bulma: SASS UI Framework"
 
 1. [Gatsby documentation - Building with Components][01]
 2. [freeCodeCamp: Setting Up a Getting Used to Gatsby][02]
@@ -527,6 +622,7 @@ References
 11. [Github: woorm/remark][11]
 12. [GatsbyJS Docs: Node API Specification][12]
 13. [GatsbyJS Docs: Building with Components][13]
+14. [Bulma Docs: Main Page][14]
 
 [i01]: ./docs/images/PatternBuffer-build-log-init-sass.png
 [i02]: ./docs/images/pattern-buffer-log-init-header.png
