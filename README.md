@@ -589,6 +589,12 @@ $colors: map-merge($colors, $addColors);
 The important bits are the initial imports of `~/bulma/sass/utilities/Initial-variables` & **insert the imports** and the adding of color values to `$colors` at the end ar what allows developers to use bulma styles but with their own customisations.
 
 
+New Layouts
+-----------
+
+***TODO Expand on this with new layouts refactor***
+Layouts beyond what is typically discussed in React, Gatsby considers through a folder `src/layouts/` as shared react components that manage common layout between each rendered markdown page. So think Sidebars and Headers.
+
 
 
 References
