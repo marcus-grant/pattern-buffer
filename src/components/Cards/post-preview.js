@@ -12,19 +12,21 @@ import './post-preview.scss';
  */
 const PostPreview = ({ post }) => (
   <div
-    className="blog-post__preview"
+    className="post-preview__card-container"
     key={post.id}
-    style={{
-      border: '1px solid black',
-      margin: '12px',
-      padding: '6px',
-    }}
   >
-    <h1>
-      <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-    </h1>
-    <h2>{post.frontmatter.date}</h2>
-    <p>{post.excerpt}</p>
+    <Link to={post.frontmatter.path}>
+      <h3 className="post-preview__title">{post.frontmatter.title}</h3>
+    </Link>
+    <h4 className="post-preview__date">{post.frontmatter.date}</h4>
+    <div className="post-preview__content">
+      <p>{post.excerpt}</p>
+      <Link
+        to={post.frontmatter.path}
+        className="post-preview__read-link"
+      >...read more
+      </Link>
+    </div>
   </div>
 );
 

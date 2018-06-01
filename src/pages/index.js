@@ -28,11 +28,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 280)
           id
           frontmatter {
             title
-            date(formatString: "MM DD, YYYY")
+            date(formatString: "YYYY-MM-DD")
             path
           }
         }

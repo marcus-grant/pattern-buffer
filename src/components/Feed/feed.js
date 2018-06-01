@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import PostPreview from '../Cards/post-preview';
 
+import './feed.scss';
+
 // TODO: Deserialize data here or in index?
 // TODO: Implement more filters, more complex fileters and user defined ones.
 /**
