@@ -1,17 +1,22 @@
 import React from 'react';
-import Link from 'gatsby-link';
+// import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
 
-const Header = () => (
+const Header = ({ text, onMenuButtonClick }) => (
   <div className="header__container">
-    <h1 style={{ color: 'white' }}>Pattern Buffer</h1>
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '3.2rem 1rem',
-      }}
-    />
+    <h1 style={{ color: 'white' }}>{text}</h1>
+    <button className="menu__button" onClick={onMenuButtonClick}>
   </div>
 );
+
+Header.propTypes = {
+  text: PropTypes.string,
+  onMenuButtonClick: PropTypes.func,
+};
+
+Header.defaultProps = {
+  text: '',
+  onMenuButtonClick: null,
+};
 
 export default Header;
