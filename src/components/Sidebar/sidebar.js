@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
 // import PropTypes from 'prop-types';
-import '../../styles/bulma-composed.scss';
+// import '../../styles/bulma-composed.scss';
+import './sidebar.scss';
 
-import logo from './pattern-buffer-logo-v1.png';
+import logo from './pattern-buffer-v2_1.svg';
 
 const Sidebar = () => (
-  <div className="column">
+  <div className="sidebar__container">
     <figure className="image is-3by4">
       <img src={logo} alt="logo" />
     </figure>
