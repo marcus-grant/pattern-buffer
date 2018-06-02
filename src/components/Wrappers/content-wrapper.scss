@@ -9,7 +9,6 @@ $margin-size: 1rem;
 
 .page-content__wrapper--horizontal {
     align-content: stretch;
-    background: $white-bis;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -40,8 +39,4 @@ $margin-size: 1rem;
     // overflow: visible;
     padding: 0px 1.0875rem 1.45rem;
     padding-top: 0;
-}
-
-.page-content__menu-button {
-    @extend .button;
 }

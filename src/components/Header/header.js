@@ -2,21 +2,23 @@ import React from 'react';
 // import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 
-const Header = ({ text, onMenuButtonClick }) => (
+import './header.scss';
+
+const Header = ({ text, onMenuClick }) => (
   <div className="header__container">
-    <h1 style={{ color: 'white' }}>{text}</h1>
-    <button className="menu__button" onClick={onMenuButtonClick}>
+    <h1 className="header__title">{text}</h1>
+    <button className="menu__button" onClick={onMenuClick}>menu</button>
   </div>
 );
 
 Header.propTypes = {
   text: PropTypes.string,
-  onMenuButtonClick: PropTypes.func,
+  onMenuClick: PropTypes.func,
 };
 
 Header.defaultProps = {
   text: '',
-  onMenuButtonClick: null,
+  onMenuClick: null,
 };
 
 export default Header;

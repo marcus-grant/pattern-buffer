@@ -1,6 +1,18 @@
 @import "../../styles/bulma-composed.scss";
 
 .header__container {
-  background: black;
-  marginBottom: 1.6rem;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    marginBottom: 1.6rem;
+}
+
+.header__title {
+    @extend .title;
+
+}
+
+.menu__button {
+    @extend .button;
 }

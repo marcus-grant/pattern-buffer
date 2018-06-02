@@ -13,15 +13,10 @@ import './content-wrapper.scss';
  * ...easy to reveal through input or automation.
  * Also, this means this can have a button that reveals the menu in all pages.
  */
-const ContentWrapper = ({ children, menuButtonCallback }) => (
+const ContentWrapper = ({ children }) => (
   <div className="page-content__wrapper--horizontal">
     <span className="page-content__spacer--horizontal" />
     <div className="page-content__wrapper--vertical">
-      <button
-        className="page-content__menu-button"
-        onClick={menuButtonCallback}
-      >Menu
-      </button>
       {children}
     </div>
     <span className="page-content__spacer--horizontal" />
@@ -36,8 +31,6 @@ ContentWrapper.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-  /** Callback for the menu button that's always visible in pages */
-  menuButtonCallback: PropTypes.func.isRequired,
 };
 
 export default ContentWrapper;

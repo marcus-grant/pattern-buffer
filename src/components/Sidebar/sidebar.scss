@@ -3,4 +3,5 @@
 .sidebar__container {
     @extend .column;
     min-width: 256px;
+    flex-grow: 0;
 }

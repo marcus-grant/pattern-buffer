@@ -1,0 +1,8 @@
+@import "../../styles/bulma-composed.scss";
+
+.page-wrapper {
+    background: $white-bis;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
