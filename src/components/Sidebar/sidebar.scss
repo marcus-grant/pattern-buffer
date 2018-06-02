@@ -5,3 +5,9 @@
     min-width: 256px;
     flex-grow: 0;
 }
+
+.site__title {
+    font-size: $is-size-4;
+    font-weight: 500;
+    color: $white;
+}

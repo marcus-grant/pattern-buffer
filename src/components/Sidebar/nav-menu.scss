@@ -1,0 +1,26 @@
+@import "../../styles/bulma-composed.scss";
+
+.nav-menu__container {
+    // display: flex;
+    // flex-direction: row;
+}
+
+.nav-menu__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.nav-menu__item,
+    // color: $white;
+}
+
+.nav-menu__link {
+    .:visited {
+        color: $white;
+    }
+}
+
+.nav-menu__text {
+    color: $white;
+}

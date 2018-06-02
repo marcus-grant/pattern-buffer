@@ -1,6 +1,9 @@
 // @import '~bulma/bulma';
 // @import '~bulma-extensions/extensions';
 
+// Get fonts
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat|Open+Sans|Source+Code+Pro');
+
 // Initial Variables
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
@@ -96,21 +99,23 @@ $pre: $text;
 $pre: $grey-light;
 $link: $red;
 $link-invert: $red-invert;
-$link-visited: $orange-dark;
+$link-visited: $white;
 $link-hover: $grey-darker;
 $link-hover-border: $grey-light;
 $link-focus: $grey-darker;
 $link-focus-border: $blue;
 $link-active: $grey-darker;
 $link-active-border: $grey-dark;
-$family-primary: $grey-dark;
-$family-primary: $family-sans-serif;
-$family-code: $family-monospace;
 $size-small: $size-7;
 $size-normal: $size-6;
 $size-medium: $size-5;
 $size-large: $size-4;
 
+// Font aliases
+$family-sans-serif: Montserrat;
+$family-monospace: "Source Code Pro";
+
+// $family-code:
 
 // Titles Aliases
 $title-color: $grey-darker;
