@@ -45,8 +45,11 @@ export default class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'sample, something' },
           ]}
         />
-        <PageWrapper headerText="" onMenuClick={this.toggleMenu}>
-          {this.props.children()}
+        <PageWrapper
+          headerText=""
+          menuVisible={this.state.menuVisible}
+          onMenuClick={this.toggleMenu}
+        >{this.props.children()}
         </PageWrapper>
         {
           this.state.menuVisible ? <Sidebar /> : null

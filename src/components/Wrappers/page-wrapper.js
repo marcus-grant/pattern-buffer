@@ -6,9 +6,15 @@ import ContentWrapper from './content-wrapper';
 
 import './page-wrapper.scss';
 
-const PageWrapper = ({ children, headerText, onMenuClick }) => (
+const PageWrapper = ({
+  children, headerText, onMenuClick, menuVisible,
+}) => (
   <div className="page-wrapper">
-    <Header text={headerText} onMenuClick={onMenuClick} />
+    <Header
+      text={headerText}
+      onMenuClick={onMenuClick}
+      menuVisible={menuVisible}
+    />
     <ContentWrapper>
       {children}
     </ContentWrapper>
@@ -18,6 +24,7 @@ const PageWrapper = ({ children, headerText, onMenuClick }) => (
 PageWrapper.propTypes = {
   headerText: PropTypes.string,
   onMenuClick: PropTypes.func.isRequired,
+  menuVisible: PropTypes.bool.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
