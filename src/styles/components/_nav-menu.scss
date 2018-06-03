@@ -17,7 +17,7 @@ $nav-align: center;
 $nav-margin: 0.5rem 0rem 0.5rem 0rem;
 $nav-padding: 0.5rem 2.5rem;
 
-
+$nav-transition: all 0.5s ease;
 
 .nav-menu__list {
     margin-top: 0.5rem;
@@ -37,6 +37,7 @@ $nav-padding: 0.5rem 2.5rem;
     border: $nav-border;
     text-align: $nav-align;
     padding: $nav-padding;
+    transition: $nav-transition;
 
     &:hover {
         background-color: $white-ter;

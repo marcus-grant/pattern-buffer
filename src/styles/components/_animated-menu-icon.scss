@@ -12,6 +12,10 @@ $right-margin: 2rem;
     width: $bar-width;
     height: $bar-height + $bar-spacing*2;
     cursor: pointer;
+    &:hover {
+        background: $grey-light;
+        transition: all 0.5s ease;
+    }
 }
 
 .animated-menu-icon,
