@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './content-wrapper.scss';
-
 /**
  * A wrapper component for the body of all site pages.
  * This gets used to wrap all body content into a standard body layout.

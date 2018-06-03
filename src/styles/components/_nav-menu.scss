@@ -1,0 +1,22 @@
+@import "../base/_colors.scss";
+@import "../base/_typography.scss";
+
+.nav-menu__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.nav-menu__item {
+    color: $white;
+}
+
+.nav-menu__link {
+    &:visited {
+        color: $white;
+    }
+}
+
+.nav-menu__text {
+    color: $white;
+}

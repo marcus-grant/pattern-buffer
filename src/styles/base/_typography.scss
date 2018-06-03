@@ -1,0 +1,92 @@
+// Get fonts
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat|Open+Sans|Source+Code+Pro');
+
+@import "./_colors.scss";
+
+// Size - Typography
+$type-size-1: 3rem;
+$type-size-2: 2.5rem;
+$type-size-3: 2rem;
+$type-size-4: 1.5rem;
+$type-size-5: 1.25rem;
+$type-size-6: 1rem;
+$type-size-7: 0.75rem;
+
+// Standardized Text Colors
+$text: $grey-dark;
+$text-invert: findColorInvert($text);
+$code: $red;
+$code-background: $grey-light;
+$pre: $text;
+$pre: $grey-light;
+$link: $red;
+$link-invert: $red-invert;
+$link-visited: $white;
+$link-hover: $grey-darker;
+$link-hover-border: $grey-light;
+$link-focus: $grey-darker;
+$link-focus-border: $blue;
+$link-active: $grey-darker;
+$link-active-border: $grey-dark;
+$size-small: $size-7;
+$size-normal: $size-6;
+$size-medium: $size-5;
+$size-large: $size-4;
+
+// Font aliases
+$family-headers: "Montserrat";
+$family-sans-serif: "Open Sans";
+$family-monospace: "Source Code Pro";
+
+// Titles Variables
+$title-color: $grey-darker;
+$title-size: $type-size-3;
+$title-weight: 700;
+$title-strong-color: inherit;
+$title-strong-weight: inherit;
+$title-line-height: 1.125;
+$subtitle-size: $type-size-4;
+$subtitle-weight: 300;
+$subtitle-strong-weight: 500;
+$subtitle-negative-margin: -1.25rem;
+
+// Body text definitions
+$body-text-size: $type-size-6;
+
+// Typography Definitions
+
+.title {
+    font-family: $family-headers;
+    font-size: $title-size;
+}
+
+.subtitle {
+    font-family: $family-headers;
+    font-size: $subtitle-size;
+    font-weight: $subtitle-weight;
+}
+
+.body-text {
+}
+
+.site__title {
+    font-family: $family-headers;
+    font-size: $type-size-3;
+    font-weight: 700;
+    line-height: 3.2rem;
+    color: $white;
+}
+
+.site__title--topline {
+    @extend .site__title;
+    font-size: $type-size-1;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+}
+
+.site__title--botline {
+    @extend .site__title;
+    font-size: $type-size-1;
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+}

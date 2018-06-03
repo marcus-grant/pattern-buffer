@@ -2,14 +2,12 @@ import React from 'react';
 // import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 
-import MenuButton from '../Buttons/menu-button';
-
-import './header.scss';
+import SidebarToggle from '../Buttons/sidebar-toggle';
 
 const Header = ({ text, onMenuClick, menuVisible }) => (
   <div className="header__container">
     <h1 className="header__title">{text}</h1>
-    <MenuButton isActive={menuVisible} onMenuClick={onMenuClick} />
+    <SidebarToggle isActive={menuVisible} onMenuClick={onMenuClick} />
     {/*
     <button className="menu__button" onClick={onMenuClick}>menu</button>
     */}

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import Header from '../Header/header';
 import ContentWrapper from './content-wrapper';
 
-import './page-wrapper.scss';
-
 const PageWrapper = ({
   children, headerText, onMenuClick, menuVisible,
 }) => (

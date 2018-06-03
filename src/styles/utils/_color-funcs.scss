@@ -1,0 +1,14 @@
+// Calculate value for brightness from 0 to 1
+@function brightness($color) {
+  @return (red($color) + green($color) + blue($color)) / (255 * 3);
+}
+
+// Brightness ratio (ie contrast)
+@function brightness_ratio($base, $color) {
+  @return abs(brightness($base) - brightness($color));
+}
+
+// Compare colors for the higher contrast with black & white
+@function findHighestContrast($base, $color1: white, $color2: black) {
+  @return if(brightness_ratio($base, $color1) > brightness_ratio($base, $color2), $color1, $color2);
+}

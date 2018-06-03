@@ -6,7 +6,7 @@ $transparent: rgba(0, 0, 0, 0);
 $top-margin: 1.5rem;
 $right-margin: 2rem;
 
-.menu-button__wrapper {
+.sidebar-toggle__wrapper {
     margin-top: $top-margin;
     margin-right: $right-margin;
     width: $bar-width;
@@ -14,14 +14,14 @@ $right-margin: 2rem;
     cursor: pointer;
 }
 
-.menu-icon,
-.menu-icon:after,
-.menu-icon:before {
+.animated-menu-icon,
+.animated-menu-icon:after,
+.animated-menu-icon:before {
     width: $bar-width;
     height: $bar-height;
 }
 
-.menu-icon {
+.animated-menu-icon {
     // position: relative;
     transform: translateY($bar-spacing);
     background: $visible;
@@ -32,7 +32,7 @@ $right-margin: 2rem;
     }
 }
 
-.menu-icon:before {
+.animated-menu-icon:before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -41,7 +41,7 @@ $right-margin: 2rem;
 	transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.menu-icon:after {
+.animated-menu-icon:after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -50,13 +50,13 @@ $right-margin: 2rem;
 	transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.menu-icon.animate:after {
+.animated-menu-icon.animate:after {
 	top: 0;
 	transform: rotate(45deg);
 	transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
 }
 
-.menu-icon.animate:before {
+.animated-menu-icon.animate:before {
 	bottom: 0;
 	transform: rotate(-45deg);
 	transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;

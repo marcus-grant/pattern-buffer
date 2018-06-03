@@ -1,6 +1,5 @@
-// TODO: This should mostly contain imports and the most important default styles
-// TODO: Global variables should be in its own _variables.scss file
-@import "../../styles/bulma-composed.scss";
+@import "../base/_colors.scss";
+
 $margin-size: 1rem;
 
 .page-content__wrapper {

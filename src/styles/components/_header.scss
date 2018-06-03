@@ -1,4 +1,4 @@
-@import "../../styles/bulma-composed.scss";
+// @import "../../styles/main.scss";
 
 .header__container {
     align-content: center;
@@ -8,11 +8,7 @@
     marginBottom: 1.6rem;
 }
 
-.header__title {
-    @extend .title;
-
-}
-
-.menu__button {
-    @extend .button;
-}
+// .header__title {
+//     @extend .title;
+//
+// }

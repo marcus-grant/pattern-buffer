@@ -1,0 +1,23 @@
+@import "../base/_colors.scss";
+@import "../base/_sizes.scss";
+@import "../base/_typography.scss";
+
+$sidebar-width: 256px;
+$logo-width: $sidebar-width - 32px;
+
+.sidebar__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 16px;
+    min-width: $sidebar-width;
+    flex-grow: 0;
+}
+
+.site__logo {
+    width: $logo-width;
+}
+
+.site__title-container {
+
+}

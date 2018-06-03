@@ -2,14 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-// import Header from '../components/Header';
-// import ContentWrapper from '../components/Wrappers/content-wrapper';
 import PageWrapper from '../components/Wrappers/page-wrapper';
-import Sidebar from '../components/Sidebar/sidebar';
+import Sidebar from '../components/Wrappers/Sidebar/sidebar';
 
-// import '../styles/main.scss';
-import './index.scss';
-import './template-wrapper.scss';
+import '../styles/main.scss';
 
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render

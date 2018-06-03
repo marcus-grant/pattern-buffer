@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
-import './post-preview.scss';
-
 /**
  * PostPreview is a failry simple component that simply renders a card
  * containing preview information about a post, with a link to read it.
@@ -11,12 +9,9 @@ import './post-preview.scss';
  * ...GraphQL query that queries all pages in gatsby-node.js.
  */
 const PostPreview = ({ post }) => (
-  <div
-    className="post-preview__card-container"
-    key={post.id}
-  >
+  <div className="card" key={post.id}>
     <Link to={post.frontmatter.path}>
-      <h3 className="post-preview__title">{post.frontmatter.title}</h3>
+      <h3 className="card__title">{post.frontmatter.title}</h3>
     </Link>
     <h4 className="post-preview__date">{post.frontmatter.date}</h4>
     <div className="post-preview__content">

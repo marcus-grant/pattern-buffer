@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import Helmet from 'react-helmet';
 
-import NewsFeed from '../components/Feed/feed';
+import NewsFeed from '../components/Wrappers/feed';
 
 // import '../css/index.css'; // add some style if you want!
 

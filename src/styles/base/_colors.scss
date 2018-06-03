@@ -1,0 +1,64 @@
+@import "../utils/_color-funcs.scss";
+
+// Main Color Names
+$red: #ff5252;
+$orange: #ff793f;
+$yellow: #ffb142;
+$green: #33d9b2;
+$blue: #34ace0;
+$purple: #40407a;
+
+// Modified Colors
+$red-dark: #b33939;
+$orange-dark: #cd6133;
+$yellow-dark: #cc8e35;
+$green-dark: #218c74;
+$blue-dark: #227093;
+$purple-dark: #2c2c54;
+$lavender: #706fd3;
+$lavender-dark: #474787;
+
+// Greyscale
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 84%);
+$white-ter: hsl(0, 0%, 92%);
+$white-bis: hsl(0, 0%, 96%);
+$white: hsl(0, 0%, 100%);
+
+// Inversions
+$red-invert: findHighestContrast($red);
+$red-dark-invert: findHighestContrast($red-dark);
+$orange-invert: findHighestContrast($orange);
+$orange-dark-invert: findHighestContrast($orange-dark);
+$yellow-invert: findHighestContrast($yellow);
+$yellow-dark-invert: findHighestContrast($yellow-dark);
+$green-invert: findHighestContrast($green);
+$green-dark-invert: findHighestContrast($green-dark);
+$blue-invert: findHighestContrast($blue);
+$blue-dark-invert: findHighestContrast($blue-dark);
+$purple-invert: findHighestContrast($purple);
+$purple-dark-invert: findHighestContrast($purple-dark);
+$lavender-invert: findHighestContrast($lavender);
+$lavender-dark-invert: findHighestContrast($lavender-dark);
+
+// Named Color Alieses
+$primary: $purple;
+$primary-invert: $purple-invert;
+$info: $blue;
+$info-invert: $blue-invert;
+$success: $green;
+$success-invert: $green-invert;
+$warning: $yellow;
+$warning-invert: $yellow-invert;
+$danger: $red;
+$danger-invert: $red-invert;
+$light: $white-ter;
+$dark: $grey-darker;
+$border: $grey-lighter;
+$border-hover: $grey-light;

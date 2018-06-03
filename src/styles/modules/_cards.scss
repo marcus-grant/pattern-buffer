@@ -1,30 +1,26 @@
-@import "../../styles/bulma-composed.scss";
+@import "../base/_colors.scss";
 
-.post-preview__card-container {
-    @extend .card;
+// TODO: Consider separating out the post preview classes from this file
+.card {
     padding: 0.5rem;
-    // border: 1px solid $grey-lighter;
-    // box-shadow: 1px 0px 1px 0px $grey-light;
-    margin: 24px;
+    margin: 2rem;
     padding-bottom: 1.8rem;
-    // background: $white;
-    // border-radius: 6px;
+    border: 12px solid $black;
+    box-shadow: 16px 16px 0px 0px;
+    max-width: 300px;
 }
 
 .post-preview__header {
-    @extend .card-header;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .post-preview__title {
-    @extend .title;
     margin-top: 0.0rem; // override bulma default of top margin = 2rem
     margin-bottom: 0.25rem;
 }
 
 .post-preview__date {
-    @extend .subtitle;
     font-size: $size-6;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
@@ -32,7 +28,6 @@
 }
 
 .post-preview__subtitle {
-    @extend .subtitle;
     margin-bottom: 1.0rem;
 }
 
