@@ -3,23 +3,20 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
 const NavMenu = ({ navItems }) => (
-  <ul className="nav-menu__list">
+  <div className="nav-menu__list">
     {
       navItems.map(navItem => (
         <Link
           className="nav-menu__link"
+          activeClassName="nav-menu__link--active"
+          exact
           to={navItem.route}
           key={`a-${navItem.text}`}
-        >
-          <li
-            className="nav-menu__text"
-            key={`li-${navItem.text}`}
-          >{navItem.text}
-          </li>
+        >{navItem.text}
         </Link>
       ))
     }
-  </ul>
+  </div>
 );
 
 NavMenu.propTypes = {
@@ -30,3 +27,24 @@ NavMenu.propTypes = {
 };
 
 export default NavMenu;
+/*
+  <ul className="nav-menu__list">
+    {
+      navItems.map(navItem => (
+        <li
+          className="nav-menu__item"
+          key={`li-${navItem.text}`}
+        >
+          <Link
+            className="nav-menu__link"
+            activeClassName="nav-menu__link--active"
+            exact
+            to={navItem.route}
+            key={`a-${navItem.text}`}
+          >{navItem.text}
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+*/

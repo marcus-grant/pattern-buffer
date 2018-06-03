@@ -1,22 +1,53 @@
 @import "../base/_colors.scss";
 @import "../base/_typography.scss";
 
+$nav-cursor: pointer;
+
+$nav-color: $white;
+
+$border-size: 8px;
+$nav-border: $border-size solid $white;
+$nav-border-hover: $border-size solid $white-ter;
+
+$nav-font: $family-headers;
+$nav-font-size: $type-size-4;
+$nav-font-weight: 600;
+$nav-align: center;
+
+$nav-margin: 0.5rem 0rem 0.5rem 0rem;
+$nav-padding: 0.5rem 2.5rem;
+
+
+
 .nav-menu__list {
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
 
-.nav-menu__item {
-    color: $white;
-}
-
 .nav-menu__link {
-    &:visited {
-        color: $white;
+    text-decoration: none;
+    cursor: $nav-cursor;
+    color: $nav-color;
+    font-family: $nav-font;
+    font-size: $nav-font-size;
+    font-weight: $nav-font-weight;
+    margin: $nav-margin;
+    border: $nav-border;
+    text-align: $nav-align;
+    padding: $nav-padding;
+
+    &:hover {
+        background-color: $white-ter;
+        border: $nav-border-hover;
+        color: $black;
     }
+
 }
 
-.nav-menu__text {
-    color: $white;
+.nav-menu__link--active  {
+    background-color: $white;
+    color: $black;
 }
+
