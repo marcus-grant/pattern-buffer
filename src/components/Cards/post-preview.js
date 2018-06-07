@@ -9,20 +9,17 @@ import Link from 'gatsby-link';
  * ...GraphQL query that queries all pages in gatsby-node.js.
  */
 const PostPreview = ({ post }) => (
-  <div className="card" key={post.id}>
-    <Link to={post.frontmatter.path}>
-      <h3 className="card__title">{post.frontmatter.title}</h3>
-    </Link>
-    <h4 className="post-preview__date">{post.frontmatter.date}</h4>
-    <div className="post-preview__content">
-      <p>{post.excerpt}</p>
-      <Link
-        to={post.frontmatter.path}
-        className="post-preview__read-link"
-      >...read more
-      </Link>
+  <Link className="card__link" to={post.frontmatter.path}>
+    <div className="card" key={post.id}>
+      <div className="post-preview__title-container">
+        <h3 className="card__title">{post.frontmatter.title}</h3>
+        <h4 className="post-preview__date">{post.frontmatter.date}</h4>
+      </div>
+      <div className="post-preview__content">
+        <p>{post.excerpt}</p>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 PostPreview.propTypes = {

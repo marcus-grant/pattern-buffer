@@ -1,38 +1,72 @@
 @import "../base/_colors.scss";
+@import "../base/_typography.scss";
+
+$card-bg: $white;
+$card-fg: $black-ter;
+$card-border-color: $black;
+
+$card-border-size: 12px;
+$card-border: $card-border-size solid $card-border-color;
+
+$card-box-style: 1rem 1rem 0rem 0rem;
+
+$card-margin: 2rem;
+$card-padding: 0.5rem;
+
+$transition-time: 0.3s;
+$transition-manner: ease-in-out;
+$card-transition: all $transition-time $transition-manner;
+$card-bg-hover: darken($card-bg, 10%);
+$card-border-hover: $card-border-size solid lighten($card-border-color, 40%);
 
 // TODO: Consider separating out the post preview classes from this file
+
+.card__link {
+    text-decoration: none;
+    width: 300px;
+}
+
 .card {
-    padding: 0.5rem;
-    margin: 2rem;
-    padding-bottom: 1.8rem;
-    border: 12px solid $black;
-    box-shadow: 16px 16px 0px 0px;
-    max-width: 300px;
+    color: $card-fg;
+    background-color: $card-bg;
+    border: $card-border;
+    box-shadow: $card-box-style;
+    width: 300px;
+    margin: $card-margin;
+    padding: $card-padding;
+    transition: $card-transition;
+
+    &:hover {
+        border: $card-border-hover;
+        transition: $card-transition;
+    }
 }
 
-.post-preview__header {
+$card-title-family: $family-headers;
+$card-title-margin: 0rem;
+$card-title-font-size: $type-size-4;
+$card-title-font-weight: 600;
+
+.card__title {
+    font-family: $card-title-family;
+    font-size: $card-title-font-size;
+    font-weight: $card-title-font-weight;
+    margin: $card-title-margin;
+}
+
+.post-preview__title-container {
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-}
-
-.post-preview__title {
-    margin-top: 0.0rem; // override bulma default of top margin = 2rem
-    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
 }
 
 .post-preview__date {
-    font-size: $size-6;
-    margin-top: 0.25rem;
-    margin-bottom: 1rem;
-    font-weight: 300;
+    // font-size: $size-6;
+    // margin-top: 0.25rem;
+    // margin-bottom: 1rem;
+    // font-weight: 300;
 }
 
 .post-preview__subtitle {
-    margin-bottom: 1.0rem;
-}
-
-.post-preview__read-link {
-    float: right;
-    margin-top: 0.0rem;
-    margin-bottom: 2rem;
+    // margin-bottom: 1.0rem;
 }
