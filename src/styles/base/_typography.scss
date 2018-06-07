@@ -1,5 +1,5 @@
 // Get fonts
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat|Open+Sans|Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat|Open+Sans|Source+Code+Pro|Space+Mono');
 
 @import "./_colors.scss";
 
@@ -35,8 +35,9 @@ $size-large: $size-4;
 
 // Font aliases
 $family-headers: "Montserrat";
-$family-sans-serif: "Open Sans";
-$family-monospace: "Source Code Pro";
+$family-sans-serif: "Open Sans, sans-serif";
+// $family-monospace: "Source Code Pro";
+$family-monospace: "Space Mono, monospace";
 
 // Titles Variables
 $title-color: $grey-darker;
@@ -45,10 +46,11 @@ $title-weight: 700;
 $title-strong-color: inherit;
 $title-strong-weight: inherit;
 $title-line-height: 1.125;
-$subtitle-size: $type-size-4;
+$subtitle-size: $type-size-5;
 $subtitle-weight: 300;
 $subtitle-strong-weight: 500;
 $subtitle-negative-margin: -1.25rem;
+$subtitle-color: $grey-darker;
 
 // Body text definitions
 $body-text-size: $type-size-6;
@@ -64,6 +66,7 @@ $body-text-size: $type-size-6;
     font-family: $family-headers;
     font-size: $subtitle-size;
     font-weight: $subtitle-weight;
+    color: $subtitle-color;
 }
 
 .body-text {

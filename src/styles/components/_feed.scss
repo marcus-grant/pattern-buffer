@@ -1,5 +1,8 @@
-.feed__container {
+.blog-posts {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    // overflow: auto;
 }
