@@ -1,0 +1,26 @@
+@import "../base/_colors.scss";
+@import "../base/_typography.scss";
+
+$borderSize: 1rem;
+$borderColor: $grey-lighter;
+$borderParams: $borderSize solid $borderColor;
+$boxShadowOffX: $borderSize;
+$boxShadowOffY: $borderSize;
+$boxShadowBlurRad: 0px;
+$boxShadowSpreadRad: 0rem;
+$boxShadowColor: $grey-light;
+$boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpreadRad $boxShadowColor;
+
+.post__container {
+    align-items: stretch;
+    background: $white-bis;
+    border: $borderParams;
+    box-shadow: $boxShadowParams;
+    display: flex;
+    flex-basis: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 2rem;
+    min-width: 32rem;
+    max-width: 64rem;
+}
