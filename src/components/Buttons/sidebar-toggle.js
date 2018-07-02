@@ -5,30 +5,29 @@ class SidebarToggle extends React.Component {
   constructor(props) {
     super(props);
     this.highlightButton = this.highlightButton.bind(this);
-    this.highlightButton = this.unHighlightButton.bind(this);
+    this.unHighlightButton = this.unHighlightButton.bind(this);
     this.state = {
-      buttonHighligted: false,
+      isHighlighted: false,
     };
   }
 
   highlightButton() {
-    tihs.setState({ buttonHighligted: true });
+    this.setState({ isHighlighted: true });
   }
 
   unHighlightButton() {
-    tihs.setState({ buttonHighligted: false });
-  }
-
-  handleMouseHover() {
-    this.setState(prevState => ({ isHovering: !prevState.isHovering }));
+    this.setState({ isHighlighted: false });
   }
 
   render() {
-    const classFromStateAndProps = () => {
-      return `animated-menu-icons${isActive ?
-          ' animate'
-      `;
-    };
+    const { onMenuClick, isActive } = this.props;
+    const { isHighlighted } = this.state;
+    const blockStyle = 'animated-menu-icon';
+    const highlightStyle = 'highlight';
+    const highlightFormatter = h => `${h ? ` ${highlightStyle}` : ''}`;
+    const typeFormatter = active => `${active ? ' cross' : ''}`;
+    const styleFormatter = (active, hi) =>
+      `${blockStyle}${typeFormatter(active)}${highlightFormatter(hi)}`;
     return (
       <div
         className="sidebar-toggle__wrapper"
@@ -39,7 +38,9 @@ class SidebarToggle extends React.Component {
         onMouseEnter={this.highlightButton}
         onMouseLeave={this.unHighlightButton}
       >
-        <div className={`animated-menu-icon${isActive ? ' animate' : ''}`} />
+        <div
+          className={styleFormatter(isActive, isHighlighted)}
+        />
       </div>
     );
   }

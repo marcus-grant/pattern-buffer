@@ -5,7 +5,10 @@ $visible: rgba(0, 0, 0, 1);
 $transparent: rgba(0, 0, 0, 0);
 $top-margin: 1.5rem;
 $right-margin: 2rem;
+$border-width: 0.1rem;
+$surrounding-border: $border-width solid black;
 
+// TODO: include focus for the sake of accessibility
 .sidebar-toggle__wrapper {
     border: none;
     margin-top: $top-margin;
@@ -18,10 +21,6 @@ $right-margin: 2rem;
         transition: all 0.5s ease;
         outline:none;
     }
-    // &:active {
-    //     outline: none;
-    //     border: none;
-    // }
     &:focus {
         outline: none;
     }
@@ -40,7 +39,7 @@ $right-margin: 2rem;
     background: $visible;
     transition: all 0ms 300ms;
 
-    &.animate {
+    &.cross {
         background: $transparent; 
     }
 }
@@ -63,13 +62,13 @@ $right-margin: 2rem;
 	transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-menu-icon.animate:after {
+.animated-menu-icon.cross:after {
 	top: 0;
 	transform: rotate(45deg);
 	transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
 }
 
-.animated-menu-icon.animate:before {
+.animated-menu-icon.cross:before {
 	bottom: 0;
 	transform: rotate(-45deg);
 	transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
