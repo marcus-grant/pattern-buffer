@@ -16,9 +16,9 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     background: $white-bis;
     border: $borderParams;
     box-shadow: $boxShadowParams;
-    display: flex;
-    flex-basis: center;
-    flex-direction: column;
+    // display: flex;
+    // flex-basis: center;
+    // flex-direction: column;
     margin-top: 2rem;
     padding: 2rem;
     min-width: 32rem;
