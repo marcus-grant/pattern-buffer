@@ -24,3 +24,44 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     min-width: 24rem;
     max-width: 42rem;
 }
+
+.post__content {
+    color: $black;
+    font-family: "Open Sans";
+    line-height: 1.5rem;
+
+    a {
+        color: $black;
+        font-weight: 800;
+
+        &:hover {
+            color: $grey;
+            font-size: 1.25rem;
+        }
+        transition: all 0.3s ease;
+    }
+
+    blockquote {
+        background: $grey-lighter;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: Montserrat;
+        font-weight: bold;
+        margin-top: 4rem;
+    }
+
+    pre {
+        background: $white-ter;
+    }
+
+    code {
+        color: $black;
+        // font-family: "Space Mono";
+        font-family: "Source Code Pro";
+        // font-size: $type-size-7;
+        font-size: 0.6rem;
+        font-weight: 500;
+        // line-height: 1.25rem;
+    }
+}
