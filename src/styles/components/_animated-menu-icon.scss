@@ -6,7 +6,7 @@ $transparent: rgba(0, 0, 0, 0);
 $top-margin: 1.5rem;
 $right-margin: 2rem;
 $border-width: 0.1rem;
-$surrounding-border: $border-width solid black;
+$surrounding-border: $border-width solid $grey-darker;
 
 // TODO: include focus for the sake of accessibility
 .sidebar-toggle__wrapper {
@@ -19,11 +19,12 @@ $surrounding-border: $border-width solid black;
     &:hover {
         background: $grey-light;
         transition: all 0.5s ease;
-        outline:none;
+        outline: $surrounding-border;
     }
     &:focus {
-        outline: none;
+        outline: $surrounding-border;
     }
+    transition: all 0.5s ease;
 }
 
 .animated-menu-icon,
