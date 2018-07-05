@@ -20,7 +20,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     ) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 240)
           html
           id
           frontmatter {
@@ -32,7 +32,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       }
     }
   }`)
-    .then((result) => {
+    .then((result) => { // eslint-disable-line
       if (result.errors) {
         return Promise.reject(result.errors);
       }
