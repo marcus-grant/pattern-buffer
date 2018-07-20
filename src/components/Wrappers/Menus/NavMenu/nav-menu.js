@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
-const NavMenu = ({ navItems }) => (
-  <div className="nav-menu__list">
+const NavMenu = ({ navItems, orientation }) => (
+  <div className={
+    `nav-menu__list--${orientation === 'vertical' ? 'vertical' : 'horizontal'}`
+  }
+  >
     {
       navItems.map(navItem => (
         <Link
@@ -24,6 +27,9 @@ NavMenu.propTypes = {
     text: PropTypes.string.isRequired,
     route: PropTypes.string.isRequired,
   })).isRequired,
+  orientation: PropTypes.PropTypes.oneOf([
+    'horizontal', 'vertical',
+  ]).isRequired,
 };
 
 export default NavMenu;

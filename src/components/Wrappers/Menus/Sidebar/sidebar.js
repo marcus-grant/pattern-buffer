@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NavMenu from './nav-menu';
+import NavMenu from '../NavMenu/nav-menu';
 
-import logo from './pattern-buffer-v2_1.svg';
+import logo from '../NavMenu/pattern-buffer-v2_1.svg';
 
 const navItems = [
   { text: 'Feed', route: '/' },
@@ -43,7 +43,7 @@ const Sidebar = ({ titleLayout }) => (
   <div className="sidebar__container">
     <img className="site__logo" src={logo} alt="logo" />
     {titleLayoutFromProp(titleLayout)}
-    <NavMenu navItems={navItems} />
+    <NavMenu navItems={navItems} orientation="vertical" />
   </div>
 );
 

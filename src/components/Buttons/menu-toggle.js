@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class SidebarToggle extends React.Component {
+class MenuToggle extends React.Component {
   constructor(props) {
     super(props);
     this.highlightButton = this.highlightButton.bind(this);
@@ -46,18 +46,13 @@ class SidebarToggle extends React.Component {
   }
 }
 
-SidebarToggle.propTypes = {
+MenuToggle.propTypes = {
   isActive: PropTypes.bool,
   onMenuClick: PropTypes.func.isRequired,
 };
 
-SidebarToggle.defaultProps = {
+MenuToggle.defaultProps = {
   isActive: false,
 };
 
-export default SidebarToggle;
-
-
-// <div className="sidebar-toggle__wrapper" onClick={onMenuClick}>
-//   <div className={`animated-menu-icon${isActive ? ' animate' : ''}`} />
-// </div>
+export default MenuToggle;

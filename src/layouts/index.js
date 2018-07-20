@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Media from 'react-media';
 import Helmet from 'react-helmet';
 
 import PageWrapper from '../components/Wrappers/page-wrapper';
-import Sidebar from '../components/Wrappers/Sidebar/sidebar';
+import Sidebar from '../components/Wrappers/Menus/Sidebar/sidebar';
 
 import '../styles/main.scss';
 
+const mobileBreakpoint = '767px';
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render
  * shared page components. These components things like headers and footers
@@ -29,28 +31,37 @@ export default class TemplateWrapper extends React.Component {
     }));
   }
 
-
   render() {
-    return (
-      // TODO: Decide if top padding should increase when showing menu
+    const { children } = this.props;
+    const { menuVisible } = this.state;
+    const helmetMetaTag = () => (
+      <Helmet
+        title="Pattern Buffer: Now with Heisenberg Compensators!"
+        meta={[
+          { name: 'description', content: 'Sample' },
+          { name: 'keywords', content: 'sample, something' },
+        ]}
+      />
+    );
+    const sidebar = menuOnTop =>
+      !menuOnTop && (menuVisible && <Sidebar />);
+    const templateWrapper = breakpointReached => (
       <div className="template-wrapper">
-        <Helmet
-          title="Pattern Buffer: Now with Heisenberg Compensators!"
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        />
+        {helmetMetaTag()}
         <PageWrapper
           headerText=""
-          menuVisible={this.state.menuVisible}
+          menuVisible={menuVisible}
           onMenuClick={this.toggleMenu}
-        >{this.props.children()}
+          topMenuVisible={breakpointReached && menuVisible}
+        >{children()}
         </PageWrapper>
-        {
-          this.state.menuVisible ? <Sidebar /> : null
-        }
+        { sidebar(breakpointReached) }
       </div>
+    );
+    return (
+      <Media query={`(max-width: ${mobileBreakpoint})`}>
+        {matches => templateWrapper(matches)}
+      </Media>
     );
   }
 }
@@ -62,20 +73,3 @@ TemplateWrapper.propTypes = {
     PropTypes.func,
   ]).isRequired,
 };
-
-// <div className="template-wrapper">
-//   <Helmet
-//     title="Pattern Buffer: Now with Heisenberg Compensators!"
-//     meta={[
-//       { name: 'description', content: 'Sample' },
-//       { name: 'keywords', content: 'sample, something' },
-//     ]}
-//   />
-//
-//   <ContentWrapper menuButtonCallback={this.toggleMenu}>
-//     {this.props.children()}
-//   </ContentWrapper>
-//   {
-//     this.state.menuVisible ? <Sidebar /> : null
-//   }
-// </div>
