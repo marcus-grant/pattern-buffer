@@ -1,0 +1,55 @@
+@import "../base/_colors.scss";
+@import "../base/_sizes.scss";
+@import "../base/_typography.scss";
+
+// $sidebar-width: 320px;
+// $logo-width: $sidebar-width - 32px;
+$logoSize: 96px;
+
+.topbar__container {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    padding: 0px 16px;
+    // min-width: $sidebar-width;
+    // flex-grow: 0;
+    background: lightblue;
+}
+
+.topbar-title-logo__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.topbar__logo {
+    width: $logoSize;
+    height: $logoSize;
+}
+
+.topbar__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.topbar__title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topbar__title {
+    font-size: 2rem;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+.topbar__title--topline {
+    @extend .topbar__title;
+    margin-bottom: 0px;
+}
+.topbar__title--botline {
+    @extend .topbar__title;
+    margin-top: 0px;
+}

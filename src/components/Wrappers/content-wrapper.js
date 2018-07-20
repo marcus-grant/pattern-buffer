@@ -16,7 +16,7 @@ const ContentWrapper = ({ children }) => (
     <span className="page-content__spacer--horizontal" />
     <div className="page-content__wrapper--vertical">
       {children}
-      <div className="page-content__spacer--vertical" />
+      {/* <div className="page-content__spacer--vertical" /> */}
     </div>
     <span className="page-content__spacer--horizontal" />
   </div>
