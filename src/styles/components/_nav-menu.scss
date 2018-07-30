@@ -19,10 +19,17 @@ $nav-padding: 0.5rem 2.5rem;
 
 $nav-transition: all 0.5s ease;
 
-.nav-menu__list {
+.nav-menu__list--vertical {
     margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.nav-menu__list--horizontal {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
 }
 
@@ -45,6 +52,16 @@ $nav-transition: all 0.5s ease;
         color: $black;
     }
 
+}
+
+.nav-menu__link--vertical {
+    @extend .nav-menu__link;
+}
+
+.nav-menu__link--horizontal {
+    @extend .nav-menu__link;
+    font-size: $type-size-6;
+    padding: 0.5rem 1rem;
 }
 
 .nav-menu__link--active  {
