@@ -4,4 +4,8 @@
 # and host configuration that ensure gatsby develop works properly.
 
 export CHOKIDAR_USEPOLLING=1
-gatsby develop --host localhost
+hostName="0.0.0.0" # localhost is also valid but doesn't host on net
+if [[ $# == 1 ]]; then
+    hostName=$1
+fi
+gatsby develop --host $hostName
