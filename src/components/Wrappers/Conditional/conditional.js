@@ -6,7 +6,7 @@ const conditional = props => !!props.condition && props.children;
 conditional.propTypes = {
   condition: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.function,
+    PropTypes.func,
   ]),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

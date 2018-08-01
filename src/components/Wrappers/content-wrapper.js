@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Conditional from '../Wrappers/Conditional/conditional';
+
 /**
  * A wrapper component for the body of all site pages.
  * This gets used to wrap all body content into a standard body layout.
@@ -11,14 +13,18 @@ import PropTypes from 'prop-types';
  * ...easy to reveal through input or automation.
  * Also, this means this can have a button that reveals the menu in all pages.
  */
-const ContentWrapper = ({ children }) => (
+const ContentWrapper = ({ children, omitSpacer }) => (
   <div className="page-content__wrapper--horizontal">
-    <span className="page-content__spacer--horizontal" />
+    <Conditional condition={!omitSpacer} >
+      <span className="page-content__spacer--horizontal" />
+    </Conditional>
     <div className="page-content__wrapper--vertical">
       {children}
       {/* <div className="page-content__spacer--vertical" /> */}
     </div>
-    <span className="page-content__spacer--horizontal" />
+    <Conditional condition={!omitSpacer} >
+      <span className="page-content__spacer--horizontal" />
+    </Conditional>
   </div>
 );
 
@@ -30,6 +36,9 @@ ContentWrapper.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  omitSpacer: PropTypes.bool,
+}; ContentWrapper.defaultProps = {
+  omitSpacer: false,
 };
 
 export default ContentWrapper;
