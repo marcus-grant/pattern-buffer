@@ -27,7 +27,8 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
 
 .post__content {
     color: $black;
-    font-family: "Open Sans";
+    // font-family: "Open Sans";
+    font-family: $family-body;
     line-height: 1.5rem;
 
     a {
@@ -58,7 +59,8 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     code {
         color: $black;
         // font-family: "Space Mono";
-        font-family: "Source Code Pro";
+        // font-family: "Source Code Pro";
+        font-family: $family-monospace;
         // font-size: $type-size-7;
         font-size: 0.6rem;
         font-weight: 500;
