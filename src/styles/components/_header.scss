@@ -1,4 +1,5 @@
 // @import "../../styles/main.scss";
+@import "../base/_colors.scss";
 
 .header__container {
     align-content: center;
@@ -6,6 +7,13 @@
     flex-direction: row;
     justify-content: space-between;
     marginBottom: 1.6rem;
+
+}
+
+// this class replaces the above when mobile size breakpoint is reached
+.header__container--mobile {
+    @extend .header__container;
+    background: $background-mobile;
 }
 
 // .header__title {

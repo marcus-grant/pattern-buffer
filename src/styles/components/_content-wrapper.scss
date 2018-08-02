@@ -32,10 +32,17 @@ $margin-size: 1rem;
     flex-direction: column;
     flex-wrap: wrap;
     // height: calc(100vh  - 2 * $margin-size);
-    height: 100vh;
+    // height: 100vh;
     justify-content: flex-start;
     min-height: 100%;
     // overflow: visible;
     padding: 0px 1.0875rem 1.45rem;
     padding-top: 0;
+}
+
+// This is the modifier class that modifies how the contents are layed out on mobile screens
+.page-content__wrapper--mobile {
+    padding: 0;
+    // background: $white-bis;
+    background: $background-mobile;
 }

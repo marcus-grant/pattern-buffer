@@ -5,11 +5,12 @@ import Helmet from 'react-helmet';
 
 import PageWrapper from '../components/Wrappers/page-wrapper';
 import Sidebar from '../components/Wrappers/Menus/Sidebar/sidebar';
+import BREAKPOINTS from '../consts/responsive-breakpoints';
 
 import '../styles/main.scss';
 
-const mobileBreakpoint = '767px';
-const autoMenuVisibilityBreakpoint = 1199;
+// const mobileBreakpoint = '767px';
+// const desktop = 1199;
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render
  * shared page components. These components things like headers and footers
@@ -23,8 +24,10 @@ export default class TemplateWrapper extends React.Component {
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
+    // this.setActiveBreakpoint = this.setActiveBreakpoint.bind(this);
     this.state = {
       menuVisible: false,
+      // activeBreakpoint: null,
     };
   }
 
@@ -48,11 +51,17 @@ export default class TemplateWrapper extends React.Component {
     }));
   }
 
+  // setActiveBreakpoint(bp) {
+  //   this.setState({ activeBreakpoint: bp });
+  // }
+
   // TODO: Implement default visibility after the visibility breakpoint width
   // This means fixing the animation of the button to work before loading
   // updateMenuVisibilityFromWidth(width) {
-  // if (width > autoMenuVisibilityBreakpoint) this.showMenu();
+  // if (width > BREAKPOINTS.desktop) this.showMenu();
   // }
+  // TODO: Try ditching react-media and using Conditional component + direct mq or globals
+  // Use this for help https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
 
 
   render() {
@@ -73,21 +82,22 @@ export default class TemplateWrapper extends React.Component {
     );
     const sidebar = menuOnTop =>
       !menuOnTop && (menuVisible && <Sidebar />);
-    const templateWrapper = breakpointReached => (
+    const templateWrapper = isMobile => (
       <div className="template-wrapper">
         {helmetMetaTag()}
         <PageWrapper
           headerText=""
           menuVisible={menuVisible}
           onMenuClick={this.toggleMenu}
-          topMenuVisible={breakpointReached && menuVisible}
+          isMobile={isMobile}
+          topMenuVisible={isMobile && menuVisible}
         >{children()}
         </PageWrapper>
-        { sidebar(breakpointReached) }
+        { sidebar(isMobile) }
       </div>
     );
     return (
-      <Media query={`(max-width: ${mobileBreakpoint})`}>
+      <Media query={`(max-width: ${BREAKPOINTS.tablet}px)`}>
         {matches => templateWrapper(matches)}
       </Media>
     );

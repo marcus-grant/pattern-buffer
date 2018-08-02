@@ -6,7 +6,8 @@ import Header from '../Header/header';
 import ContentWrapper from './content-wrapper';
 
 const PageWrapper = ({
-  children, headerText, onMenuClick, menuVisible, topMenuVisible,
+  children, headerText, onMenuClick,
+  menuVisible, topMenuVisible, isMobile,
 }) => (
   <div className="page-wrapper">
     {topMenuVisible && <Topbar />}
@@ -14,8 +15,9 @@ const PageWrapper = ({
       text={headerText}
       onMenuClick={onMenuClick}
       menuVisible={menuVisible}
+      isMobile={isMobile}
     />
-    <ContentWrapper>
+    <ContentWrapper isMobile={isMobile}>
       {children}
     </ContentWrapper>
   </div>
@@ -26,6 +28,7 @@ PageWrapper.propTypes = {
   onMenuClick: PropTypes.func.isRequired,
   menuVisible: PropTypes.bool.isRequired,
   topMenuVisible: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -35,6 +38,7 @@ PageWrapper.propTypes = {
 
 PageWrapper.defaultProps = {
   headerText: '',
+  isMobile: false,
 };
 
 export default PageWrapper;

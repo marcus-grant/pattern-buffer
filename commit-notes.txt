@@ -1,0 +1,32 @@
+[#57] First vers. of mobile-size feed preview style
+* Conditional component to more cleanly (in code) render cond'nly
+* omitSpacer prop for ContentWrapper to remove horiz. spacers
+* omitContentSpacer prop in PageWrapper
+  * Used to pass bool into ContentWrapper
+  * Same value as ContentWrapper's omitSpacer
+* Add const/breaks* back into layouts/index.js
+* Change breakpoints to include:
+  * mobile - changed to 480
+  * tablet - still 768
+  * desktop - chaged to 1200
+    * new name for autoMenuVisibilityBreakpoint
+  * large - new @ 1280
+  * xlarge - new @ 1600
+* Initial work to make readable boolean breakpoint functions
+  * commented out for now till time to flesh it out
+* Rename breakpointReached in layout/index, it's semantically reversed
+ * renamed, isMobile
+* _content-wrapper.scss:
+  * page-content__wrapper--mobile is the class for mobile specific styl
+  * padding: 0
+* new partial stylesheet: src/styles/components/_mobile-post-previews
+  * currently an exact copy of _cards.scss
+  * will have exact matches to _cards elements with own block selectrs
+  * will be used by PostPreview component to render different previews
+  when mobile breakpoints are in play.
+* PostPreview
+  * import 'react-media' & '.../breakpoints.js'
+  * now has basic funcitons for managing breakpoint logic.
+  * conditional rendering is handled by 'react-media' component
+  * for now a <h1> placeholder gets rendered when mobile size
+  * otherwise behaves exactly as before but with conditional render

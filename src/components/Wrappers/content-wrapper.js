@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Used to make conditional rendering cleaner and more readable
 import Conditional from '../Wrappers/Conditional/conditional';
 
 /**
@@ -13,16 +14,19 @@ import Conditional from '../Wrappers/Conditional/conditional';
  * ...easy to reveal through input or automation.
  * Also, this means this can have a button that reveals the menu in all pages.
  */
-const ContentWrapper = ({ children, omitSpacer }) => (
+const ContentWrapper = ({ children, isMobile }) => (
   <div className="page-content__wrapper--horizontal">
-    <Conditional condition={!omitSpacer} >
+    <Conditional condition={!isMobile} >
       <span className="page-content__spacer--horizontal" />
     </Conditional>
-    <div className="page-content__wrapper--vertical">
+    <div className={`page-content__wrapper--vertical${
+        isMobile ? ' page-content__wrapper--mobile' : ''
+      }`}
+    >
       {children}
       {/* <div className="page-content__spacer--vertical" /> */}
     </div>
-    <Conditional condition={!omitSpacer} >
+    <Conditional condition={!isMobile} >
       <span className="page-content__spacer--horizontal" />
     </Conditional>
   </div>
@@ -36,9 +40,9 @@ ContentWrapper.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-  omitSpacer: PropTypes.bool,
+  isMobile: PropTypes.bool,
 }; ContentWrapper.defaultProps = {
-  omitSpacer: false,
+  isMobile: false,
 };
 
 export default ContentWrapper;
