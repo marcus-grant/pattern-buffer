@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import Media from 'react-media';
-
-import BREAKPOINTS from '../../consts/responsive-breakpoints';
 
 /**
  * PostPreview is a failry simple component that simply renders a card
@@ -37,24 +34,42 @@ const previewAsCards = post => (
         </div>
         <div className="card__footer">
           <p className="card__date">{post.frontmatter.date}</p>
-          <p className="card__tag">#<b>js</b> #<b>opinion</b> #<b>cs</b></p>
+          <p className="card__tag">
+            #<b>tagA</b> #<b>tagB</b> #<b>tagC</b>
+          </p>
         </div>
       </div>
     </Link>
   </div>
 );
 
-const conditionalPostPreview = (post, isMobile) => (
-  isMobile ?
-    <h1 style={{ color: 'red' }}>Placeholder for mobile post previews</h1> :
-    previewAsCards(post)
+const previewAsTableItem = post => (
+  <div className="table-item" key={post.id}>
+    <Link className="table-item__link" to={post.frontmatter.path}>
+      <div className="table-item__content">
+        <div className="table-item__header">
+          <h1 className="table-item__title">{post.frontmatter.title}</h1>
+        </div>
+        <div className="table-item__body">
+          <p>{post.excerpt}</p>
+        </div>
+        <div className="table-item__footer">
+          <p className="table-item__date">{post.frontmatter.date}</p>
+          <p className="table-item__tag">
+            #<b>tagA</b> #<b>tagB</b> #<b>tagC</b>
+          </p>
+        </div>
+      </div>
+    </Link>
+  </div>
 );
 
-const PostPreview = ({ post }) => (
-  <Media query={`(max-width: ${BREAKPOINTS.tablet}px)`}>
-    {isMobile => conditionalPostPreview(post, isMobile)}
-  </Media>
-);
+const conditionalPostPreview = (post, isMobile) => {
+  if (isMobile) return previewAsTableItem(post);
+  return previewAsCards(post);
+};
+
+const PostPreview = ({ post, isMobile }) => conditionalPostPreview(post, isMobile);
 
 PostPreview.propTypes = {
   post: PropTypes.shape({
@@ -66,6 +81,7 @@ PostPreview.propTypes = {
       date: PropTypes.string,
     }).isRequired,
   }).isRequired,
-};
+  isMobile: PropTypes.bool,
+}; PropTypes.defaultProps = { isMobile: false };
 
 export default PostPreview;

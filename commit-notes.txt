@@ -1,3 +1,24 @@
+[#57] Style mobile-sized post previews
+
+* Rename styles/components/_mobile-post-previes.scss
+  * Moved to styles/modules
+  * Renamed to _table-items.scss
+  * This is to semantically reflect that table items are
+  the visual description of what mobile post previews are.
+  * It's a module because table items might be reused elsewhere
+  * Might need renaming later but for now this works better.
+* _table-items.scss:
+  * __separator class for visual separators
+  * renamed a lot of classes
+  * fixed a lot of paddings & margins to make things fit
+* feed.js
+  * The feed now is the one checking media queries with 'react-media'
+  * This is instead of post-preview.js
+  * Passes isMobile prop to post-preview to do the same thing as b4
+  * Feed now uses a conditional rendering of a bottom separator if mobile
+* Fonts are now  Roboto & Roboto Condensed to deal w/ compatibility
+* pages/index.js w/ 160 pruneLength for now to make mobile fit easier
+
 [#57] First vers. of mobile-size feed preview style
 * Conditional component to more cleanly (in code) render cond'nly
 * omitSpacer prop for ContentWrapper to remove horiz. spacers

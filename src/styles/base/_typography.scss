@@ -1,5 +1,6 @@
 // Get fonts
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Oswald|Montserrat|Open+Sans|Source+Code+Pro|Space+Mono');
+// @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Oswald|Montserrat|Open+Sans|Source+Code+Pro|Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed');
 
 @import "./_colors.scss";
 
@@ -34,8 +35,10 @@ $size-medium: $size-5;
 $size-large: $size-4;
 
 // Font aliases
-$family-headers: "Montserrat";
+// $family-headers: "Montserrat";
+$family-headers: "Roboto", sans-serif;
 $family-sans-serif: "Open Sans, sans-serif";
+$family-body: "Roboto Condensed", sans-serif;
 // $family-monospace: "Source Code Pro";
 $family-monospace: "Space Mono, monospace";
 

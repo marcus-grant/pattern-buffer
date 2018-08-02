@@ -7,6 +7,7 @@
 // Then get the modules
 @import "./modules/_links.scss";
 @import "./modules/_cards.scss";
+@import "./modules/_table-item.scss";
 
 // Then get the components
 @import "./components/_template-wrapper.scss";
@@ -19,7 +20,6 @@
 @import "./components/_nav-menu.scss";
 @import "./components/_feed.scss";
 @import "./components/_blog-post.scss";
-@import "./components/_mobile-post-previews.scss";
 
 // Global resets
 html {

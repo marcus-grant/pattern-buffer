@@ -20,7 +20,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     ) {
       edges {
         node {
-          excerpt(pruneLength: 240)
+          excerpt(pruneLength: 180)
           html
           id
           frontmatter {

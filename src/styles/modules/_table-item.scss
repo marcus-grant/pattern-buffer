@@ -1,0 +1,130 @@
+@import "../base/_colors.scss";
+@import "../base/_typography.scss";
+
+$table-item-bg: $white;
+$table-item-fg: $black-ter;
+$table-item-border-color: $black;
+
+// $table-item-width: 20rem;
+
+$separator-height: 0.5rem;
+// $table-item-border: $table-item-border-size solid $table-item-border-color;
+
+$table-item-box-style: 0.5rem 0.5rem 0rem 0rem;
+$table-item-box-style-hover: 0.5rem 0.5rem 0.25rem 0.25rem $grey-dark;
+
+$table-item-margin: 1rem 0.5rem;
+$table-item-padding: 0.33rem;
+
+$transition-time: 0.3s;
+$transition-manner: ease-in-out;
+$table-item-transition: all $transition-time $transition-manner;
+$table-item-bg-hover: darken($table-item-bg, 10%);
+// $table-item-border-hover: $table-item-border-size solid lighten($table-item-border-color, 40%);
+
+.table-item {
+    color: $table-item-fg;
+    background-color: $table-item-bg;
+    // border: $table-item-border;
+    border-top: 0.5rem soild $table-item-border-color;
+    // box-shadow: $table-item-box-style;
+    // width: $table-item-width;
+    // margin: $table-item-margin;
+    padding: $table-item-padding;
+    transition: $table-item-transition;
+
+    // &:hover {
+    //     border: $table-item-border-hover;
+    //     box-shadow: $table-item-box-style-hover;
+    //     transition: $table-item-transition;
+    // }
+}
+
+.table-item__separator {
+    height: $separator-height;
+    // height: 100px;
+    width: 100%;
+    background-color: $black;
+}
+
+.table-item__link {
+    text-decoration: none;
+    color: $table-item-fg;
+}
+
+// Wrapper for laying out the different sections of the card (ie header, body, footer)
+.table-item__content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 8rem;
+
+    p {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+    }
+}
+
+// Card Headers
+
+// $table-item-title-family: $family-headers;
+// $table-item-title-font-size: 1rem;
+$table-item-title-font-size: 1.2rem;
+$table-item-title-font-weight: bold;
+// $table-item-title-margin-top: 0.25rem;
+$table-item-title-margin: 0rem;
+
+.table-item__header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.table-item__title {
+    // font-family: $table-item-title-family;
+    // font-family: "Open Sans", sans-serif;
+    font-family: $family-headers;
+    font-size: $table-item-title-font-size;
+    font-weight: $table-item-title-font-weight;
+    // margin: $table-item-title-margin;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+
+    // h1, h2, h3, h4, h5, h6 {
+    //     margin-top: 0rem;
+    //     margin-bottom: 0rem;
+    // }
+}
+
+.table-item__body {
+    margin: 0rem;
+    font-family: $family-body;
+}
+
+// Card Footers
+
+$footer-font-size: 0.8rem;
+
+.table-item__footer {
+    // @extend .subtitle;
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: $footer-font-size;
+    font-family: $family-headers;
+    justify-content: space-between;
+    width: 100%;
+    // margin-top: 0.5rem;
+    // margin-bottom: 0.5rem;
+    font-weight: 300;
+    p { margin: 0rem; }
+}
+
+.table-item__date {
+    // font-weight: 300;
+}
+
+.table-item__tag {
+    // @extend .subtitle;
+    // font-weight: 300;
+}
