@@ -32,6 +32,7 @@ $table-item-bg-hover: darken($table-item-bg, 10%);
     // margin: $table-item-margin;
     padding: $table-item-padding;
     transition: $table-item-transition;
+    width: 100%;
 
     // &:hover {
     //     border: $table-item-border-hover;
