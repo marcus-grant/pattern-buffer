@@ -44,6 +44,7 @@ const Sidebar = ({ titleLayout }) => (
     <img className="site__logo" src={logo} alt="logo" />
     {titleLayoutFromProp(titleLayout)}
     <NavMenu navItems={navItems} orientation="vertical" />
+    <div className="sidebar__bottom-spacer" />
   </div>
 );
 

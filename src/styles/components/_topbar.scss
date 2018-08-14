@@ -10,7 +10,7 @@ $logoSize: 96px;
     display: flex;
     flex-direction: column;
     // align-items: center;
-    padding: 0px 16px;
+    padding: 8px 16px;
     // min-width: $sidebar-width;
     // flex-grow: 0;
     background: $black;
@@ -30,7 +30,7 @@ $logoSize: 96px;
 .topbar__container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    // align-items: flex-start;
     align-content: center;
 }
 
@@ -38,20 +38,22 @@ $logoSize: 96px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 8px;
 }
 
 .topbar__title {
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     font-family: $family-headers;
-    font-weight: bold;
+    font-weight: 600;
     color: $white-ter;
+    margin: 0rem;
 }
 
 .topbar__title--topline {
     @extend .topbar__title;
-    margin-bottom: 0px;
+    margin-bottom: -10px;
 }
 .topbar__title--botline {
     @extend .topbar__title;
-    margin-top: 0px;
+    margin-top: -10px;
 }

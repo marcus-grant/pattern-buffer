@@ -4,7 +4,7 @@ import Media from 'react-media';
 
 import NavMenu from '../NavMenu/nav-menu';
 
-import logo from '../NavMenu/pattern-buffer-v2_1.svg';
+import logo from '../NavMenu/pattern-buffer-v3_2.svg';
 
 const navItems = [
   { text: 'Feed', route: '/' },

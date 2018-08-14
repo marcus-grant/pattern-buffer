@@ -18,6 +18,12 @@ $logo-width: $sidebar-width - 32px;
     width: $logo-width;
 }
 
-.site__title-container {
-
+.sidebar__bottom-spacer {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
 }
+
+// .site__title-container {
+
+// }

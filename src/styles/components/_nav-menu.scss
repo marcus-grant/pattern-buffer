@@ -31,6 +31,7 @@ $nav-transition: all 0.5s ease;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-end;
 }
 
 .nav-menu__link {
@@ -41,14 +42,12 @@ $nav-transition: all 0.5s ease;
     font-size: $nav-font-size;
     font-weight: $nav-font-weight;
     margin: $nav-margin;
-    border: $nav-border;
     text-align: $nav-align;
     padding: $nav-padding;
     transition: $nav-transition;
 
     &:hover {
         background-color: $white-ter;
-        border: $nav-border-hover;
         color: $black;
     }
 
@@ -56,12 +55,18 @@ $nav-transition: all 0.5s ease;
 
 .nav-menu__link--vertical {
     @extend .nav-menu__link;
+    border: $nav-border;
+
+    &:hover {
+        border: $nav-border-hover;
+    }
 }
 
 .nav-menu__link--horizontal {
     @extend .nav-menu__link;
     font-size: $type-size-6;
     padding: 0.5rem 1rem;
+    width: 4.2rem;
 }
 
 .nav-menu__link--active  {
