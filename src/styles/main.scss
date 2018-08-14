@@ -26,12 +26,18 @@ html {
     // font-size: 62.5%;
     margin: 0 !important;
     padding: 0 !important;
+    height: 100%;
 }
 
 body {
     margin: 0 !important;
     padding: 0 !important;
     background: $white-ter;
+    height: 100%;
+}
+
+#___gatsby { // The Gatsby root node for the application
+    height: 100%;
 }
 
 ul {
