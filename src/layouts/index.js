@@ -9,13 +9,19 @@ import BREAKPOINTS from '../consts/responsive-breakpoints';
 
 import '../styles/main.scss';
 
+import 'typeface-roboto'; // eslint-disable-line
+
 // const mobileBreakpoint = '767px';
 // const desktop = 1199;
+
+/* Font definitions that are globaly applied in JS to CSS through Typography.js
+*/
+
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render
  * shared page components. These components things like headers and footers
  * that get reused on every page. It's possible to use props.location
- * to conditionally render based on the page URL
+ * to conditionally render bsed on the page URL
  */
 // TODO: Add background component to create border and hidden features
 export default class TemplateWrapper extends React.Component {
