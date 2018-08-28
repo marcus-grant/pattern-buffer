@@ -9,13 +9,12 @@ import BREAKPOINTS from '../consts/responsive-breakpoints';
 
 import '../styles/main.scss';
 
+// Self hosted fonts from 'typeface-XXXX' packages
 import 'typeface-roboto'; // eslint-disable-line
+import 'typeface-roboto-mono'; // eslint-disable-line
 
 // const mobileBreakpoint = '767px';
 // const desktop = 1199;
-
-/* Font definitions that are globaly applied in JS to CSS through Typography.js
-*/
 
 /*
  * In Gatsby convention, src/layouts/ files are used optionally to render
