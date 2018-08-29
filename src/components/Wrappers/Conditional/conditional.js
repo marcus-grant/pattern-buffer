@@ -71,7 +71,7 @@ export class RenderIfMobile extends React.Component {
     };
   }
 
-  componentWillMount() { this.updateWidth(); }
+  // componentWillMount() { this.updateWidth(); }
   // TODO: SERIOUSLY REFACTOR THIS!!!!
   componentDidMount() {
     const upd = this.updateWidth;
@@ -93,6 +93,9 @@ export class RenderIfMobile extends React.Component {
       window.addEventListener('resize', resizeThrottler, false);
     }());
   }
+
+  componentWillUnmount() { window.removeEventListener('resize', this.updateWidth); }
+
   // NEEDS TO BE THROTTLED
   // componentDidMount() { this.updateWidth(); }
 
