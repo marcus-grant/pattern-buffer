@@ -1,13 +1,18 @@
 // @import "../../styles/main.scss";
 @import "../base/_colors.scss";
 
+// Named parameters
+$topPadding: 1.6rem;
+$botPadding: 0.8rem;
+$rightPadding: 1.6rem;
+$leftPadding: 1.6rem;
+
 .header__container {
     align-content: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    marginBottom: 1.6rem;
-
+    padding: $topPadding $rightPadding $botPadding $leftPadding
 }
 
 // this class replaces the above when mobile size breakpoint is reached

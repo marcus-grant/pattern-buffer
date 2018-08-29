@@ -12,7 +12,7 @@ const Header = ({
 }) => (
   <div className={conditionalContainerClass(isMobile)}>
     <h1 className="header__title">{text}</h1>
-    <MenuToggle isActive={menuVisible} onMenuClick={onMenuClick} />
+    <MenuToggle isCross={menuVisible} onMenuClick={onMenuClick} />
   </div>
 );
 

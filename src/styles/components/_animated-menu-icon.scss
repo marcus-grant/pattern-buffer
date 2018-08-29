@@ -1,76 +1,88 @@
+@import "../base/_colors.scss";
+
+// Common button bar styling parameters
 $bar-width: 3rem;
 $bar-height: 0.5rem;
 $bar-spacing: 1rem;
-$visible: rgba(0, 0, 0, 1);
-$transparent: rgba(0, 0, 0, 0);
-$top-margin: 1.5rem;
-$right-margin: 2rem;
-$border-width: 0.1rem;
-$surrounding-border: $border-width solid $grey-darker;
+$colorVisible: $black;
+$colorHighlight: $grey-light;
 
-// TODO: include focus for the sake of accessibility
-.sidebar-toggle__wrapper {
+// Animation params
+// aXXXX 'a' prefix represents (a)nimation or transtion values
+$aFunc: cubic-bezier(0.23, 1, 0.32, 1); 
+$aTime: 400ms;
+$colorTime: 800ms;
+$colorTrans: background-color $colorTime ease;
+$opacityTrans: $colorTrans, opacity $aTime $aFunc;
+$topBurgerTrans: $colorTrans, transform $aTime $aFunc, top     $aTime $aFunc $aTime;
+$botBurgerTrans: $colorTrans, transform $aTime $aFunc, bottom  $aTime $aFunc $aTime;
+$topCrossTrans: $colorTrans, top    $aTime $aFunc, transform $aTime $aTime $aFunc;
+$botCrossTrans: $colorTrans, bottom $aTime $aFunc, transform $aTime $aTime $aFunc;
+
+// Hamburger mode
+.site-menu-button__bar {
+    background: $colorVisible;
+    width: $bar-width;
+    height: $bar-height;
+    position: absolute;
+    // transition: background-color $aTime ease;
+
+    &-top--hamburger {
+        top: 0;
+        background: $colorVisible;
+        transition: $topBurgerTrans;
+    }
+    &-top--cross {
+        top: $bar-spacing;
+        transform: rotate(-45deg);
+        transition: $topCrossTrans;
+    }
+
+    &-mid--hamburger {
+        top: $bar-spacing;
+        opacity: 1;
+        transition: $opacityTrans;
+    }
+    &-mid--cross {
+        top: $bar-spacing;
+        opacity: 0;
+        transition: $opacityTrans;
+    }
+
+    &-bot--hamburger {
+        bottom: 0;
+        background: $colorVisible;
+        transition: $botBurgerTrans;
+    }
+    &-bot--cross {
+        bottom: $bar-spacing;
+        transform: rotate(45deg);
+        transition: $botCrossTrans;
+    }
+
+    &--highlight {
+        background: $colorHighlight;
+    }
+}
+
+// TODO: Find better way to manage focus
+.site-menu__button-wrapper {
+    position: relative;
     border: none;
-    margin-top: $top-margin;
-    margin-right: $right-margin;
+    // margin-top: $top-margin;
+    // margin-right: $right-margin;
     width: $bar-width;
     height: $bar-height + $bar-spacing*2;
     cursor: pointer;
-    &:hover {
-        background: $grey-light;
-        transition: all 0.5s ease;
-        outline: $surrounding-border;
-    }
+    // &:hover {
+    //     background: $grey-light;
+    //     transition: all 0.5s ease;
+    //     // outline: $surrounding-border;
+    //     border: none;
+    // }
     &:focus {
-        outline: $surrounding-border;
+        // outline: $surrounding-border;
+        outline: none;
     }
     transition: all 0.5s ease;
-}
-
-.animated-menu-icon,
-.animated-menu-icon:after,
-.animated-menu-icon:before {
-    width: $bar-width;
-    height: $bar-height;
-}
-
-.animated-menu-icon {
-    // position: relative;
-    transform: translateY($bar-spacing);
-    background: $visible;
-    transition: all 0ms 300ms;
-
-    &.cross {
-        background: $transparent; 
-    }
-}
-
-.animated-menu-icon:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: $bar-spacing;
-	background: $visible;
-	transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.animated-menu-icon:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: $bar-spacing;
-	background: $visible;
-	transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.animated-menu-icon.cross:after {
-	top: 0;
-	transform: rotate(45deg);
-	transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
-}
-
-.animated-menu-icon.cross:before {
-	bottom: 0;
-	transform: rotate(-45deg);
-	transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
 }

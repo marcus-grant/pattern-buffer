@@ -1,3 +1,30 @@
+Refactor site-menu button
+
+* menu-toggle.js:
+  * The animated button is now three divs instead of one.
+    * Before the one used pseudo classes.
+    * They were a nightmare to pass 'highlight' state to.
+  * Refactor class name formatting routines:
+    * Now all classNames are computed w/ intermediate consts
+    * In the end three strings for classNames for ea. bar.
+  * Rename class names to use site-menu-buttonXXXX as block
+  * Elem. classNames are now __wrapper & __barXXXX
+  * BEM mods are now --cross --hamburger --highlight
+  * _animated-menu-icon.scss:
+    * Complete rewrite with same animations.
+    * SASS '&' in use to simplify class definitions.
+    * Makes use of the three new divs of animated button
+    * Mid bar dissappear is now a 'opacity' transition
+    * Highlight is seperate transition changing color
+    * Remove container highlight animations & outline
+    * TODO in the future better outline handling...
+    *... needs implementation for accessibility.
+  * Prop to indicate menu open is now 'isCross'
+    * This component only cares if the button is a cross or not
+    * ... and if it's highlighted
+  * This was also fixed in the parent class header.js
+
+
 [#57] Style mobile-sized post previews
 
 * Rename styles/components/_mobile-post-previes.scss
