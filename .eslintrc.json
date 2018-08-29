@@ -11,6 +11,7 @@
       }]
     },
     "globals": {
-        "graphql": true
+        "graphql": true,
+        "window": true
     }
 }

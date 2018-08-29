@@ -21,8 +21,18 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     // flex-direction: column;
     margin-top: 2rem;
     padding: 2rem;
-    min-width: 24rem;
+    // min-width: 24rem;
     max-width: 42rem;
+}
+
+.post__container--mobile {
+    @extend .post__container;
+    border: none;
+    padding: 1rem;
+    margin-top: 0;
+    padding-top: 0;
+    box-shadow: none;
+    background: $background-mobile;
 }
 
 .post__content {
@@ -47,13 +57,14 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-family: Montserrat;
+        font-family: $family-headers;
         font-weight: bold;
         margin-top: 4rem;
     }
 
     pre {
         background: $white-ter;
+        padding: 1rem 0.5rem;
     }
 
     code {
@@ -65,5 +76,13 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
         font-size: 0.6rem;
         font-weight: 500;
         // line-height: 1.25rem;
+    }
+}
+
+.post__content--mobile {
+    @extend .post__content;
+
+    pre {
+        background: $white-bis;
     }
 }

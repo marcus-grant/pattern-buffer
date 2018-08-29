@@ -1,4 +1,28 @@
-Refactor site-menu button
+[#61] Fix blog-post.js layout & style on mobile
+
+* conditional.js components added:
+  * RenderIfElse is there to render one or another --
+    -- passed component based on a passed condition
+  * RenderIfMobile:
+    * A component that checks window for mobile --
+    --breakpoints and renders conditionally.
+    * Two passed set of nodes get rendered on condition
+    * Uses RenderIfElse to conditionally render.
+    * Performs own state updates to check on breakpoints.
+    * Uses a throttled event listener to recheck resizes.
+* blog-post.js:
+  * Now uses RenderIfMobile with seperate renderings --
+  -- for each case.
+  * The two cases just add a BEM modifier --mobile for --
+  -- for styling based on mobile sizes.
+* _blog-post.scss:
+  * extended classes to handle mobile styles.
+  * Changed background color, padding, margin, padding, wdt
+* Change mobile background to be brighter in sass aliases.
+* Fix _typography.scss family aliases to current standard.
+* Add 'window' to eslint recognized globals
+
+Refactor animated site-menu button
 
 * menu-toggle.js:
   * The animated button is now three divs instead of one.

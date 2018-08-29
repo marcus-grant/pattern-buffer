@@ -1,27 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+// import Media from 'react-media';
+import { RenderIfMobile } from '../components/Wrappers/Conditional/conditional';
+
+// TODO: This should be its own set of conditional helper components
+// const renderIf = (condition, children) => (condition ? children : null);
 
 // import '../css/blog-post.scss'; // future styling
 
-const pageTitle = 'Pattern Buffer';
-
 // This will take among its props, an injected GraphQL query for blog posts
+// TODO: Find way to pass the title to the header
 // TODO: Try different methods to replace dangerouslySetInnerHTML, like wrapping div
 // TODO: Create proptypes
 export default function Template({ data }) {
   const { markdownRemark: post } = data; // data.markdownRemark holds post data
-  return (
-    <div className="post__container">
+  const pageTitle = 'Pattern Buffer';
+  const renderPost = isMobile => (
+    <div className={`post__container${isMobile ? '--mobile' : ''}`}>
       <Helmet title={`${pageTitle} - ${post.frontmatter.title}`} />
-      <div className="post">
-        <h1>{post.frontmatter.title}</h1>
-        <div
-          className="post__content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-      </div>
+      <div
+        className={`post__content${isMobile ? '--mobile' : ''}`}
+        dangerouslySetInnerHTML={{ __html: post.html }} // eslint-disable-line
+      />
     </div>
+  );
+  const postIfMobile = renderPost(true);
+  const postIfNotMobile = renderPost(false);
+  return (
+    <RenderIfMobile isMobile={postIfMobile} notMobile={postIfNotMobile} />
   );
 }
 

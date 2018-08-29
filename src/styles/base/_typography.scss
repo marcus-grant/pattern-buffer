@@ -37,7 +37,7 @@ $size-large: $size-4;
 // Font aliases
 // $family-headers: "Montserrat";
 $family-headers: "Roboto", sans-serif;
-$family-sans-serif: "Open Sans, sans-serif";
+$family-sans-serif: "Roboto, sans-serif";
 $family-body: "Roboto Condensed", sans-serif;
 // $family-monospace: "Source Code Pro";
 $family-monospace: "Roboto Mono, monospace";
@@ -72,8 +72,8 @@ $body-text-size: $type-size-6;
     color: $subtitle-color;
 }
 
-.body-text {
-}
+// .body-text {
+// }
 
 .site__title {
     font-family: $family-headers;
