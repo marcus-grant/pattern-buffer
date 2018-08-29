@@ -13,7 +13,7 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
 
 .post__container {
     align-items: stretch;
-    background: $white-bis;
+    background: lighten($white-bis, 40%);
     border: $borderParams;
     box-shadow: $boxShadowParams;
     // display: flex;
@@ -39,6 +39,7 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     color: $black;
     // font-family: "Open Sans";
     font-family: $family-body;
+    font-size: 1.4rem;
     line-height: 1.5rem;
 
     a {
@@ -59,8 +60,34 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
     h1, h2, h3, h4, h5, h6 {
         font-family: $family-headers;
         font-weight: bold;
-        margin-top: 4rem;
+        margin-top: 2.4rem;
     }
+
+    h1 {
+        font-size: 2.4rem;
+        font-weight: 1000;
+    }
+
+    h2 {
+        font-size: 2.0rem; 
+        font-weight: 1000;
+    }
+
+    h3 {
+        font-size: 2.0rem;
+        margin-top: 2.0rem;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+    }
+
+    h5 { font-size: 1.6rem; }
+    h6 { font-size: 1.6rem; font-weight: regular; }
+
+    // h1 {
+    //     margin-top: 3.2rem;
+    // }
 
     pre {
         background: $white-ter;
@@ -81,6 +108,35 @@ $boxShadowParams: $boxShadowOffX $boxShadowOffY $boxShadowBlurRad $boxShadowSpre
 
 .post__content--mobile {
     @extend .post__content;
+
+    font-size: 1.2rem;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 1000;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 1000;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+        font-weight: 1000;
+    }
+
+    h4 {
+        font-size: 1.6rem;
+    }
+
+    h5 {
+        font-size: 1.4rem;
+    }
+
+    h6 {
+        font-size: 1.2rem;
+    }
 
     pre {
         background: $white-bis;
