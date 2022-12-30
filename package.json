@@ -15,7 +15,7 @@
     "gatsby"
   ],
   "dependencies": {
-    "gatsby": "^1.9.277",
+    "gatsby": "^5.3.3",
     "gatsby-link": "^1.6.44",
     "gatsby-plugin-catch-links": "^1.0.15",
     "gatsby-plugin-react-helmet": "^2.0.11",
